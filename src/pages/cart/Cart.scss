@@ -1,0 +1,71 @@
+.Cart{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: calc(100vh - 60px);
+
+    .kartNav{
+        background-color: #263427;
+        width: 80%;
+        padding-top: 20px;
+        margin-top: 20px;
+        height: 70vh;
+        overflow-y: scroll;
+
+        .kartnavUl{
+            display: flex;
+            justify-content: space-evenly;
+            color: var(--primary-button-color);
+            list-style: none;
+            font-family: "MODERN";
+            // text-align: center;
+            padding: 0;
+            .productLi{
+                width: 10%;
+                text-align: center;
+                
+            }
+            .titleLi{
+                width: 30%;
+            }
+            .priceLi{
+                width: 10%;
+                text-align: center;
+                
+            }
+            .quantityLi{
+                width: 10%;
+                text-align: center;
+                
+            }
+            .totalLi{
+                width: 10%;
+                text-align: center;
+                
+            }
+            .removeLi{
+                width: 10%;
+                text-align: center;
+                
+            }
+        }
+
+
+    }
+    .kartNav::-webkit-scrollbar{
+        display: none;
+    }
+    // .allcarts{
+
+    // }
+    // .allcarts::-webkit-scrollbar{
+    //     display: none;
+    // }
+}
+.emptyKart{
+    text-align: center;
+    padding-top: 20px;
+    color: var(--primary-button-color);
+    font-family: "MODERN";
+}

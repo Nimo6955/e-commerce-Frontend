@@ -1,0 +1,48 @@
+.myOrdersComp{
+
+    flex: 3;
+        display: flex;
+        flex-direction: column;
+
+        .personalInfo {
+            h3 {
+                padding: 20px 50px;
+                margin-block: auto;
+                margin-left: 20px;
+                font-family: "MODERN";
+                color: var(--primary-button-color);
+                text-shadow: 2px 2px 5px black;
+            }
+        }
+        .rightContainer {
+            background-color: #263427;
+            height: 400px;
+            width: 90%;
+            margin-inline: auto;
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px;
+            padding: 30px;
+            label{
+                font-weight: 700;
+                width: fit-content;
+            }
+            input{
+                margin-block: 20px;
+                padding: 10px 20px;
+                border-radius: 20px;
+                width: 50%;
+                border: none;
+                outline: none;
+                background-color: whitesmoke;
+                // color: ;
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+}

@@ -1,0 +1,44 @@
+.productscart{
+    display: flex;
+    justify-content: space-evenly;
+    // text-align: center;
+    color: white;
+    align-items: center;
+    .productImg{
+        height: 100px;
+        width: 10%;
+        // object-fit: cover;  
+        object-fit: contain;
+        align-self: center;
+        transform: translate3d(0, 0, 1px);
+    }
+    .name{
+        width: 30%;
+    }
+    .price{
+        width: 10%;
+        text-align: center;
+    }
+    .Quantity{
+        width: 10%;
+        text-align: center;
+
+        .quantityIcon{
+            font-size: 25px;
+            margin-inline: 10px;
+            cursor: pointer;
+        }
+        .quantityIcon:hover{
+            color: var(--primary-button-color);
+
+        }
+    }
+    .Total{
+        width: 10%;
+        text-align: center;
+    }
+    button{
+        width: 10%;
+        
+    }
+}

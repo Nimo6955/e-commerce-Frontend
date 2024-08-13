@@ -1,0 +1,93 @@
+.SignUp{
+    position: relative;
+    .canvas{
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    left: 0;
+    bottom: 0%;
+    touch-action: none;
+}
+}
+.SignupContainer{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #A1CCA5;
+
+    .main{
+        height: fit-content;
+        background-color: #111D13;
+        width: 800px;
+        display: flex;
+        border-radius: 20px;
+        // justify-content: space-between;
+
+        .formImage{
+            height: max;
+            width: 350px;
+
+            .objImg{
+                height: 100%;
+                width: 100%;
+                img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    border-top-left-radius: 20px;    
+                    border-bottom-left-radius: 20px;
+                }
+            }
+        }
+        .form{
+            padding: 50px;
+            width: 60%;
+            h2{
+                color: white;
+                color: var(--primary-button-color);
+                font-family: 'MODERN';
+            }
+            .mainForm{
+                display: flex;
+                flex-direction: column;
+                margin-top: 50px;
+                .inputs{
+                    display: flex;
+                    flex-direction: column;
+                    input{
+                        margin-block: 20px;
+                        padding: 10px 20px;
+                        border-radius: 20px;
+                        width: 100%;
+                        border: none;
+                        outline: none;
+                        background-color: #415D43;
+                        color: white;
+                    }
+                    input::placeholder {
+                        color: white;
+                    }
+                }
+            }
+            button{
+                margin-inline: auto;
+                padding: 10px 40px;
+                margin-top: 20px;
+                border-radius: 20px;
+                border: none;
+                outline: none;
+                background-color: var(--primary-button-color);
+                font-weight: 650;
+            }
+            // button:hover{
+            //     background-color: #9dff00;
+            // }
+            p{
+                text-align: center;
+                color: white;
+                margin-top: 40px;
+            }
+        }
+    }
+}

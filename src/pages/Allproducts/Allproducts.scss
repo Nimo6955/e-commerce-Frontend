@@ -1,0 +1,110 @@
+@font-face {
+    font-family: 'MODERN';
+    /* Name your font family */
+    src: url('../../assets/txt.ttf');
+    /* Locate the .ttf file within your directory*/
+}
+
+.Accessories {
+    display: flex;
+    padding-right: 50px;
+
+    .leftPart {
+        flex: 1;
+        padding-top: 20px;
+        background-color: #263327;
+        padding-left: 50px;
+
+        .sidebar {
+            hr {
+                width: 90%;
+            }
+
+            .allProductlistUl {
+                list-style: none;
+                padding: 0px !important;
+
+
+                .liBox{
+                    height: 40px;
+                    width: 80%;
+                    // background-color: red;
+                    border-radius: 10px;
+                    // display: grid;
+                    // place-items: center;
+
+                    .allProductlistLi {
+                        margin-top: 10px;
+                        color: #A1CCA5;
+                        text-align: center;
+                        padding-top: 6px;
+                    }
+                }
+                .liBox:hover{
+                    background-color: var(--secondary-background-color);
+                    .allProductlistLi{
+                        color: var(--primary-button-color);
+                    }
+                }
+            }
+
+            .filter {
+                margin-top: 50px;
+                color: var(--primary-button-color);
+                font-family: 'MODERN';
+            }
+
+            .browseBy {
+                color: var(--primary-button-color);
+                font-family: 'MODERN';
+            }
+
+            .price {
+                color: #A1CCA5;
+            }
+        }
+    }
+
+    .rightPart {
+        height: calc(99vh - 60px);
+        flex: 4;
+        overflow-y: scroll;
+        // background-color: green;
+        padding-left: 50px;
+
+        .products {
+            // display: grid;
+            // grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            // width: 100%;
+            grid-gap: 20px;
+            // align-items: stretch;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 70px;
+            font-weight: 700;
+            color: var(--primary-button-color);
+            font-family: 'MODERN';
+        }
+
+        .numberOfProducts {
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            margin-right: 50px;
+
+            h5 {
+                font-size: 15px;
+                
+            }
+        }
+    }
+
+    .rightPart::-webkit-scrollbar {
+        display: none;
+        visibility: none;
+    }
+}

@@ -1,0 +1,76 @@
+.allProductBox{
+    // flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .productsCard{
+        display: flex;
+        justify-content: space-evenly;
+        color: white;
+        align-items: center;
+        // width: 80%;
+        width: 100%;
+
+    .productImg{
+        height: 100px;
+        width: 10%;
+        // object-fit: cover;  
+        object-fit: contain;
+        align-self: center;
+        transform: translate3d(0, 0, 1px);
+    }
+    .name{
+        width: 30%;
+    }
+    .price{
+        width: 10%;
+        text-align: center;
+    }
+    .Total{
+        width: 10%;
+        text-align: center;
+    }
+    .deleteBtnBox{
+        width: 10%;
+        display: grid;
+        place-items: center;
+        .productDelete{
+            height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-button-color);
+        border: none;
+        outline: none;
+        .deleteIcon{
+            font-size: 20px;
+        }
+    }
+    .productDelete:hover{
+        background-color: rgba(0, 0, 0, 0.8);
+        color: var(--primary-button-color);
+    }
+}
+    .editBtnBox{
+        width: 10%;
+        display: grid;
+        place-items: center;
+        .productEdit{
+            height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-button-color);
+        border: none;
+        outline: none;
+
+        .EditIcon{
+            font-size: 20px;
+        }
+    }
+    .productEdit:hover{
+        background-color: rgba(0, 0, 0, 0.8);
+        color: var(--primary-button-color);
+    }
+}
+}
+}

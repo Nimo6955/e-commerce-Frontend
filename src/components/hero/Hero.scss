@@ -1,0 +1,147 @@
+.heroMain{
+    h1{
+        text-align: center;
+        margin-top: 100px;
+        font-size: 50px;
+        font-weight: 600;
+        font-family: 'MODERN';
+        color: var(--primary-button-color);
+        text-shadow: 0px 2px 10px black;
+    }
+    
+    .sticky_parent{
+    height: 500vh;
+    .sticky{
+        overflow: hidden;
+        position: sticky;
+        top: 5%;
+        height: 100vh;
+        .scroll_section{
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 480vw;
+            will-change: transform;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding-left: 500px;
+            .upcommingGames1{
+                height: 500px;
+                width: 90vw;
+                background-image: url(../../assets/wukong1.jpg);
+                border-radius: 50px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                // border: 1px solid var(--primary-button-color);
+                // box-shadow: 0px 0px 5px ;
+                #myVideo1 {
+                    display: none;
+                    background-attachment: fixed;
+                    z-index: -1;
+                    background-size: cover;
+                    // animation: anime 1s infinite;
+                    overflow: hidden;
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 50px;
+                    object-fit: cover;
+                    // transition: ease;
+                }
+            }
+            .upcommingGames1:hover{
+                #myVideo1{
+                    display: block;
+                    
+                  }
+                }
+            .upcommingGames2{
+                height: 500px;
+                width: 90vw;
+                background-image: url(../../assets/gta.jpg);
+                border-radius: 50px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                #myVideo2 {
+                    display: none;
+                    background-attachment: fixed;
+                    z-index: -1;
+                    background-size: cover;
+                    // animation: anime 1s infinite;
+                    transition: ease;
+                    overflow: hidden;
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 50px;
+                    object-fit: cover;
+                    // transition: ease;
+                  }
+                
+            }
+            .upcommingGames2:hover{
+                #myVideo2{
+                    display: block;
+                    
+                }
+              }
+            .upcommingGames3{
+                height: 500px;
+                width: 90vw;
+                background-image: url(../../assets/dbz.jpg);
+                border-radius: 50px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                #myVideo3 {
+                    display: none;
+                    background-attachment: fixed;
+                    z-index: -1;
+                    background-size: cover;
+                    // animation: anime 1s infinite;
+                    transition: ease;
+                    overflow: hidden;
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 50px;
+                    object-fit: cover;
+                    // transition: ease;
+                  }
+            }
+            .upcommingGames3:hover{
+                #myVideo3{
+                    display: block;
+                    
+                }
+              }
+            .upcommingGames4{
+                height: 500px;
+                width: 90vw;
+                background-image: url(../../assets/gow.jpg);
+                border-radius: 50px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                #myVideo4 {
+                    display: none;
+                    background-attachment: fixed;
+                    z-index: -1;
+                    background-size: cover;
+                    // animation: anime 1s infinite;
+                    transition: ease;
+                    overflow: hidden;
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 50px;
+                    object-fit: cover;
+                  }
+            }
+            .upcommingGames4:hover{
+                #myVideo4{
+                    display: block;
+                    
+                }
+              }
+
+        }   
+    }
+
+}
+}

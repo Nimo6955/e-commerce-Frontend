@@ -1,0 +1,115 @@
+.addProduct{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #709775;
+
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        // height: 500px;
+        width: 500px;
+        border-radius: 20px;
+        background-color: #263327;
+        padding: 50px;
+
+
+        label{
+            color: white;
+            margin-top: 10px;
+        }
+
+            input{
+                margin-block: 5px;
+                padding: 10px 20px;
+                border-radius: 20px;
+                width: 100%;
+                border: none;
+                outline: none;
+                background-color: #415D43;
+                color: white;
+            }
+            input::placeholder {
+                color: white;
+            }
+            .priceContainer{
+                display: flex;
+                gap: 20px;
+            }
+            .addProductSelector{
+                background-color: #415D43;
+                outline: none;
+                border: none;
+                width: fit-content;
+                color: white;
+                height: 45px;
+                border-radius: 20px;
+                margin-block: 5px;
+                padding-inline: 10px;
+                padding-right: 20px;
+
+                option{
+                    margin-top: 200px !important;
+                    border: none;
+                }
+            }
+        .productImgae{
+            height: 100px;
+            width: 150px;
+            background-color: #415D43;
+            margin-top: 10px;
+            border-radius: 20px;
+            display: grid;
+            place-items: center;
+            .uploadIcon{
+                font-size: 60px;
+                color: #A1CCA5;
+            }
+            h5{
+                color: #A1CCA5;
+            }
+        }
+        .productImgae1,.productImgae2,.productImgae3{
+            height: 50px;
+            width: 80px;
+            background-color: #415D43;
+            margin-top: 10px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            .uploadIcon1,.uploadIcon2,.uploadIcon3{
+                font-size: 30px;
+                color: #A1CCA5;
+            }
+            p{
+                color: #A1CCA5;
+            }
+        }
+        .submit{
+            margin-inline: auto;
+            border-radius: 20px;
+            padding: 8px 50px;
+            outline: none;
+            border: none;
+            margin-top: 20px;
+            background-color: var(--primary-button-color);
+        }
+    }
+}
+.icon{
+    height: 80px;
+    width: 80px;
+    background-color: #9bf900;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    .plus{
+        font-size: 30px;
+    }
+}

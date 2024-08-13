@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+/* @font-face {
+    font-family: 'BODYTXT';
+    src: url('../../assets/bodyTxt.ttf');
+  } */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    /* font-family: "Chakra Petch", sans-serif;
+    font-family:  "Nunito", sans-serif; */
+    /* font-family: 'BODYTXT';   */
+
+}
+   
+body{
+    background-color: var(--background-color);
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    overflow: hidden;
+}
+.container2{
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: 0 20px;
+    overflow: hidden;
+}
+:root {
+    --primary-button-color: #9bf900;
+    --secondary-text-color: #888;
+    --background-color: #212321;
+    --secondary-background-color: #111D13;
+    --text-color: #A1CCA5;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+.ant-modal-close{
+    display: none !important;
+}
+.ant-modal-content{
+    padding: 0px 0px !important;
+}

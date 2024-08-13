@@ -1,0 +1,101 @@
+@font-face {
+    font-family: 'MODERN'; /* Name your font family */
+    src: url('../../assets/txt.ttf'); /* Locate the .ttf file within your directory*/
+  }
+.Navbar {
+    background-color: var(--secondary-background-color);
+    height: 60px;
+    z-index: 99;
+    color: white;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+  
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+
+        .nav-left {
+           
+            .link-group {
+                list-style: none;
+                display: flex;
+                margin-block: auto;
+                gap: 16px;
+
+                .link {
+                    display: inline-block;
+                    padding: 6px;
+                }
+            }
+        }
+
+        .nav-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-text-color);
+            display: flex;
+            .banner {
+                color: white;
+                font-family: 'MODERN';
+                margin-block: auto;
+                text-shadow: 2px 2px 10px var(--primary-button-color);
+            }
+        }
+
+        .nav-right {
+            display: flex;
+           
+            .nav-cartNav {
+                position: relative;
+                padding: 6px;
+                margin-top: 10px;
+                cursor: pointer;
+                .iconNav {
+                   height: 30px;
+                }
+                .cart-count {
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    top: -10px;
+                    right: -2px;
+                    background-color: var(--primary-button-color);
+                    color: black;
+                    font-size: 0.6rem;
+                    border-radius: 20px;
+                    font-weight: 700;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            .profileIcon{
+                font-size: 25px;
+                margin-left: 20px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Navbar {
+        .nav-container {
+
+            .nav-left {
+                display: none;
+            }
+
+            .nav-center {
+                position: static;
+                transform: translateX(0);
+            }
+
+        }
+    }
+
+}
