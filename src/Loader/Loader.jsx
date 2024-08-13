@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Loader1 from '../assets/loader.gif'
 import './Loader.scss'
-import video from '../assets/gaming.mp4'
 import Headphones from '../assets/loadingHeadphone.png'
 import Mouse from '../assets/loadingMouse.png'
 import Chair from '../assets/loadingChair.png'

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './AdminAddProduct.scss'
-import upload from '../../assets/upload.jpeg'
 import { FiUploadCloud } from "react-icons/fi";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,7 +10,7 @@ import user from '../../assets/adminUsers.gif'
 import { jwtDecode } from 'jwt-decode'
 import {Popover} from 'antd';
 import { FaPlus } from "react-icons/fa";
-import webIcon from '../../assets/webIcon2.png'
+import Skull from '../../assets/skull.png'
 
 
 function AdminAddProduct() {
@@ -112,7 +111,7 @@ function AdminAddProduct() {
         <div>
           <Link to={`/admin`} >
           <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
-            <img src={webIcon} alt="" style={{height: '40px',width: '40px'}}/>
+            <img src={Skull} alt="" style={{height: '40px',width: '40px'}}/>
             <h5 style={{marginBlock: 'auto',color: 'black'}}>Admin Page</h5>
           </div>
           </Link>
