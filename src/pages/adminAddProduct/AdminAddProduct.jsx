@@ -101,6 +101,7 @@ function AdminAddProduct() {
     const decodedToken = jwtDecode(token);
     let adminId = decodedToken.user._id;
   
+    const role = decodedToken.user.role
   
     function handleLogout(){
       localStorage.removeItem('token')
@@ -121,15 +122,22 @@ function AdminAddProduct() {
             <img src={list} alt="" style={{height: '40px',width: '40px'}}/>
             <h5 style={{marginBlock: 'auto',color: 'black'}}>All Products</h5>
           </div>
-          </Link>
+          </Link >
           <hr />
-          <Link>
-          <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
-            <img src={user} alt=""style={{width: '40px',height: '30px'}} />
-            <h5 style={{marginBlock: 'auto',color: 'black'}}>All Users</h5>
-          </div>
-          </Link>
-          <hr />
+          {
+        role == 'Super Admin' ? (
+
+          <Link to={`/AdminAllUsers/${adminId}`}>
+      <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
+        <img src={user} alt=""style={{width: '40px',height: '30px'}} />
+        <h5 style={{marginBlock: 'auto',color: 'black'}}>All Users</h5>
+      </div>
+      </Link>
+      ) : ''}
+       {
+        role == 'Super Admin' ? (
+      <hr />
+    ) : ''}
           <Link>
           <div onClick={handleLogout} className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
           <MdLogout style={{fontSize: '40px', color: '#9bf900'}} />

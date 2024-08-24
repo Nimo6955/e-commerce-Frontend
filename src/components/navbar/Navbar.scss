@@ -3,7 +3,7 @@
     src: url('../../assets/txt.ttf'); /* Locate the .ttf file within your directory*/
   }
 .Navbar {
-    background-color: var(--secondary-background-color);
+    background-color: rgb(17, 29, 19, 0.9);
     height: 60px;
     z-index: 99;
     color: white;
@@ -28,6 +28,7 @@
                 .link {
                     display: inline-block;
                     padding: 6px;
+                    margin-block: auto;
                 }
             }
         }

@@ -20,6 +20,7 @@ import ProductContext from './components/contextProvider/ProductContext';
 import Cart from './pages/cart/Cart';
 import Profile from './pages/profile/Profile';
 import ErrorPage from './pages/errorPage/ErrorPage';
+import AdminAllUsers from './pages/AdminAllUsers/AdminAllUsers';
 
 export const userContext = createContext()
 
@@ -61,6 +62,7 @@ function App() {
                 <Route path='/admin' element={<ProtectedRoute element={Admin} />} />
                 <Route path='/adminaddproduct/:id' element={<ProtectedRoute element={AdminAddProduct} />} />
                 <Route path='/adminallproducts/:id' element={<ProtectedRoute element={AdminAllproduct} />} />
+                <Route path='/AdminAllUsers/:id' element={<ProtectedRoute element={AdminAllUsers} />} />
               </Routes>
             </Router>
           </ProductContext>

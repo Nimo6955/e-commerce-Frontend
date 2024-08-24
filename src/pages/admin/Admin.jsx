@@ -22,7 +22,8 @@ function Admin() {
   const decodedToken = jwtDecode(token);
   let adminId = decodedToken.user._id;
 
-
+  const role = decodedToken.user.role
+  
   function handleLogout(){
     localStorage.removeItem('token')
     navigate('/login')
@@ -45,13 +46,20 @@ function Admin() {
       </div>
       </Link>
       <hr />
-      <Link>
+      {
+        role == 'Super Admin' ? (
+
+          <Link to={`/AdminAllUsers/${adminId}`}>
       <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
         <img src={user} alt=""style={{width: '40px',height: '30px'}} />
         <h5 style={{marginBlock: 'auto',color: 'black'}}>All Users</h5>
       </div>
       </Link>
+      ) : ''}
+       {
+        role == 'Super Admin' ? (
       <hr />
+    ) : ''}
       <Link>
       <div onClick={handleLogout} className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
       <MdLogout style={{fontSize: '40px', color: '#9bf900'}} />
@@ -71,7 +79,7 @@ function Admin() {
         <FaPlus className='plus'/>
       </div>
         </Popover>
-    <h1 className='adminTxt'>ADMIN</h1>
+    <h1  className='adminTxt'>{role == 'Super Admin' ? 'SUPER ADMIN' : 'ADMIN'}</h1>
     </div>
     </>
   )

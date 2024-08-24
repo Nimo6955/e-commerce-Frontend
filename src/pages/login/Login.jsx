@@ -41,7 +41,7 @@ function Login() {
         const decoded = jwtDecode(res.data.result)
         console.log(decoded.user);
         localStorage.setItem('token', res.data.result)
-        if(decoded.user.role === 'admin'){
+        if(decoded.user.role === 'admin' || decoded.user.role === 'Super Admin'){
           navigate('/admin')
           // navigate(0)
         }else{

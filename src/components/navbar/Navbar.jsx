@@ -33,6 +33,16 @@ function Navbar() {
     const kartsProducts = allkartsId?.map(kartId => allProducts?.find(product => product?._id === kartId));
     // console.log(kartsProducts);
 
+    const routToAccessories = () => {
+        navigate('/allproducts', {state: 'All'})
+    }
+        const routToControllers = () => {
+        navigate('/allproducts', {state: 'Controller'})
+    }
+        const routToGames = () => {
+        navigate('/allproducts', {state: 'Games'})
+    }
+
   return (
     <>
       <div className="Navbar">
@@ -40,13 +50,13 @@ function Navbar() {
           <div className="nav-left">
             <ul className="link-group">
               <li className="hover-link">
-                <Link className="link" to="/products?category=comic">Comics</Link>
+                <p onClick={routToAccessories} className="link" >All products</p>
               </li>
               <li className="hover-link">
-                <Link className="link" to="/products?category=shows">TV Shows</Link>
+                <p onClick={routToControllers} className="link">Controllers</p>
               </li>
               <li className="hover-link">
-                <Link className="link" to="/products?category=sports">Sports</Link>
+                <p onClick={routToGames} className="link" >Games</p>
               </li>
             </ul>
           </div>

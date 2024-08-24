@@ -13,17 +13,19 @@
     // background-attachment: fixed;
     z-index: -1;
     // animation: anime 1s infinite;
+    background-image: url(../../assets/wallwall.jpeg);
+    background-position-y: -100px;
     transition: ease;
     // overflow: hidden;
     height: 100%;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    // background-position: center;
   }
   .txt{
     position: absolute;
-    bottom: 0%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     z-index: 23;
@@ -50,8 +52,14 @@
                 outline: none;
                 border-radius: 20px;
                 border: none;
-                background-color: #39ff14;
-                color: black;
+                color: var(--primary-button-color);
+                background-color: black;
+
+      &:hover{
+        background-color: var(--primary-button-color);
+        color: black;
+        font-weight: 700;
+      }
     }
   }
 }

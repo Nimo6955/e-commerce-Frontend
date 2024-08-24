@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Home.scss'
 import Hero from '../../components/hero/Hero'
 import Category from '../../components/category/Category'
@@ -16,6 +16,7 @@ import Skull from '../../assets/skull.png'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import VideoSection from '../../components/videoSection/VideoSection'
+import KeyboardAnimation from '../../components/keyboardAnimation/KeyboardAnimation'
 
 
 
@@ -50,20 +51,31 @@ function Home(user) {
     </div>
   );
 
-  setTimeout(() => {
-    document.getElementById('Home').style.display = 'block'
-    document.getElementById('Loading').style.display = 'none'
-    AOS.init({
-      duration: 700,
-    });
-  }, 6000);
+  const [loading, setLoading] = useState(true);  
+
+  useEffect(() => {  
+      const timer = setTimeout(() => {  
+          setLoading(false); // Set loading to false after 6 seconds  
+
+          AOS.init({
+            duration: 700,
+          })
+      }, 6000);  
+
+      // Cleanup the timer when the component unmounts  
+      return () => clearTimeout(timer);  
+  }, []);  
   return (
     <>
+    {loading ? (  
+                <Loader/>  
+            ) : (
 
     <div className='home' id='Home'>
      <Navbar user={user.user} />
 
       <Main/>
+      <KeyboardAnimation/>
       <VideoSection/>
       <Hero/>
 
@@ -95,9 +107,10 @@ function Home(user) {
     : ''}
     <Footer/>
     </div>
-    <div id='Loading'>
-        <Loader />
-      </div>
+    // <div id='Loading'>
+    //     <Loader />
+    //   </div>
+      )} 
     </>
   )
 }

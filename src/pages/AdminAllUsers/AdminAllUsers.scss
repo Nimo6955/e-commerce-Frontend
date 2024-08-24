@@ -1,0 +1,63 @@
+.AdminAllusers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #709775;
+
+    h1{
+        font-family: "MODERN";
+        color: var(--primary-button-color);
+        text-shadow: 0px 2px 5px black;
+    }
+
+    .container {
+        height: 500px;
+        width: 500px;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: #263327;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        overflow-y: scroll;
+        
+        .usersContainer {
+            display: flex;
+            justify-content: space-between;
+        
+
+            h5 {
+                color: #A1CCA5;
+            }
+
+            .bbtns {
+
+                button {
+                    margin-inline: 10px;
+                    padding: 4px 10px;
+                    border-radius: 20px;
+                    border: none;
+                    outline: none;
+                    font-weight: 600;
+                }
+
+                .block {
+                    color: black;
+                    background-color: var(--primary-button-color);
+                }
+
+                .remove {
+                    color: var(--primary-button-color);
+                    background-color: black;
+                    border: 1px solid var(--primary-button-color);
+                }
+            }
+        }
+    }
+    .container::-webkit-scrollbar{
+        display: none;
+    }
+}

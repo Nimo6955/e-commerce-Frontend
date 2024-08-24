@@ -27,7 +27,7 @@ const ProtectedRoute = ({ element: Component, ...rest }) => {
 
     }, [navigate]);
 
-    if (!user || (user !== 'admin')) {
+    if (!user || (user !== 'admin' && user !== 'Super Admin')) {
         return <ErrorPage />;
     }
     return <Component {...rest} user={user} />;
