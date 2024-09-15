@@ -9,6 +9,7 @@ import MyOrders from '../../components/myOrders/MyOrders';
 import Address from '../../components/address/Address';
 import { userContext } from '../../App';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 
 function Profile() {
@@ -20,8 +21,8 @@ function Profile() {
     const [email, setEmail] = useState()
     const [mobileNumber, setMobileNumber] = useState()
     const [gender, setGender] = useState()
-
-
+    const location = useLocation()
+    
     const profileRef = useRef()
     const MyOrderRef = useRef()
     const addressRef = useRef()
@@ -33,6 +34,9 @@ function Profile() {
         MyOrderRef.current.style.display = 'none'
         addressRef.current.style.display = 'none'
     },[])   
+
+
+ 
     
     
     const displayMyOrders = () => {
@@ -114,6 +118,22 @@ function Profile() {
         orderIcon.style.color = '#A1CCA5'
 
     }
+
+    useEffect(()=> {
+        if(location.state == "address"){
+            MyOrderRef.current.style.display = 'none'
+            profileRef.current.style.display = 'none'
+            addressRef.current.style.display = 'block'
+        }
+        else if(location.state == "profile"){
+            displayProfile()
+        }
+        else if(location.state == "orders"){
+            displayMyOrders()
+        }
+    },[location])
+
+
     useEffect(() => {  
         if (user) {  
             setName(user.name);  
@@ -148,7 +168,7 @@ function Profile() {
     
     return (
         <>
-            <Navbar />
+            <Navbar/>
             <div>
                 <div className="profileContainer">
                     <div className="leftPart">

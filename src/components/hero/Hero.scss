@@ -1,8 +1,9 @@
-.heroMain{
+.heroMain {
     // background-color: #f3f7fa;
     background-image: url(../../assets/seamless.png);
     padding-top: 100px;
-    h1{
+
+    h1 {
         text-align: center;
         font-size: 50px;
         font-weight: 600;
@@ -10,140 +11,268 @@
         color: var(--primary-button-color);
         text-shadow: 0px 2px 2px black;
     }
-    
-    .sticky_parent{
-    height: 500vh;
-    .sticky{
-        overflow: hidden;
-        position: sticky;
-        top: 5%;
-        height: 100vh;
-        .scroll_section{
-            position: absolute;
-            top: 0;
-            height: 100%;
-            width: 480vw;
-            will-change: transform;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            padding-left: 500px;
-            .upcommingGames1{
-                height: 500px;
-                width: 90vw;
-                background-image: url(../../assets/wukong3.jpg);
-                border-radius: 50px;
-                background-size: cover;
-                background-repeat: no-repeat;
-                // border: 1px solid var(--primary-button-color);
-                // box-shadow: 0px 0px 5px ;
-                #myVideo1 {
-                    display: none;
-                    background-attachment: fixed;
-                    z-index: -1;
-                    background-size: cover;
-                    // animation: anime 1s infinite;
-                    overflow: hidden;
-                    height: 100%;
-                    width: 100%;
-                    border-radius: 50px;
-                    object-fit: cover;
-                    // transition: ease;
-                }
-            }
-            .upcommingGames1:hover{
-                #myVideo1{
-                    display: block;
-                    
-                  }
-                }
-            .upcommingGames2{
-                height: 500px;
-                width: 90vw;
-                background-image: url(../../assets/gta2.jpg);
-                border-radius: 50px;
-                background-size: cover;
-                background-repeat: no-repeat;
-                #myVideo2 {
-                    display: none;
-                    background-attachment: fixed;
-                    z-index: -1;
-                    background-size: cover;
-                    // animation: anime 1s infinite;
-                    transition: ease;
-                    overflow: hidden;
-                    height: 100%;
-                    width: 100%;
-                    border-radius: 50px;
-                    object-fit: cover;
-                    // transition: ease;
-                  }
-                
-            }
-            .upcommingGames2:hover{
-                #myVideo2{
-                    display: block;
-                    
-                }
-              }
-            .upcommingGames3{
-                height: 500px;
-                width: 90vw;
-                background-image: url(../../assets/dbz2.jpg);
-                border-radius: 50px;
-                background-size: cover;
-                background-repeat: no-repeat;
-                #myVideo3 {
-                    display: none;
-                    background-attachment: fixed;
-                    z-index: -1;
-                    background-size: cover;
-                    // animation: anime 1s infinite;
-                    transition: ease;
-                    overflow: hidden;
-                    height: 100%;
-                    width: 100%;
-                    border-radius: 50px;
-                    object-fit: cover;
-                    // transition: ease;
-                  }
-            }
-            .upcommingGames3:hover{
-                #myVideo3{
-                    display: block;
-                    
-                }
-              }
-            .upcommingGames4{
-                height: 500px;
-                width: 90vw;
-                background-image: url(../../assets/gow2.png);
-                border-radius: 50px;
-                background-size: cover;
-                background-repeat: no-repeat;
-                #myVideo4 {
-                    display: none;
-                    background-attachment: fixed;
-                    z-index: -1;
-                    background-size: cover;
-                    // animation: anime 1s infinite;
-                    transition: ease;
-                    overflow: hidden;
-                    height: 100%;
-                    width: 100%;
-                    border-radius: 50px;
-                    object-fit: cover;
-                  }
-            }
-            .upcommingGames4:hover{
-                #myVideo4{
-                    display: block;
-                    
-                }
-              }
 
-        }   
+    .sticky_parent {
+        height: 500vh;
+
+        .sticky {
+            overflow: hidden;
+            position: sticky;
+            top: 5%;
+            height: 100vh;
+
+            .scroll_section {
+                position: absolute;
+                top: 0;
+                height: 100%;
+                width: 480vw;
+                will-change: transform;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                padding-left: 500px;
+
+                .upcommingGames1 {
+                    height: 500px;
+                    width: 90vw;
+                    background-image: url(../../assets/wukong3.jpg);
+                    border-radius: 50px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+
+                    // border: 1px solid var(--primary-button-color);
+                    // box-shadow: 0px 0px 5px ;
+                    #myVideo1 {
+                        display: none;
+                        background-attachment: fixed;
+                        z-index: -1;
+                        background-size: cover;
+                        // animation: anime 1s infinite;
+                        overflow: hidden;
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 50px;
+                        object-fit: cover;
+                        // transition: ease;
+                    }
+                }
+
+                .upcommingGames1:hover {
+                    #myVideo1 {
+                        display: block;
+
+                    }
+                }
+
+                .upcommingGames2 {
+                    height: 500px;
+                    width: 90vw;
+                    background-image: url(../../assets/gta2.jpg);
+                    border-radius: 50px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+
+                    #myVideo2 {
+                        display: none;
+                        background-attachment: fixed;
+                        z-index: -1;
+                        background-size: cover;
+                        // animation: anime 1s infinite;
+                        transition: ease;
+                        overflow: hidden;
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 50px;
+                        object-fit: cover;
+                        // transition: ease;
+                    }
+
+                }
+
+                .upcommingGames2:hover {
+                    #myVideo2 {
+                        display: block;
+
+                    }
+                }
+
+                .upcommingGames3 {
+                    height: 500px;
+                    width: 90vw;
+                    background-image: url(../../assets/dbz2.jpg);
+                    border-radius: 50px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+
+                    #myVideo3 {
+                        display: none;
+                        background-attachment: fixed;
+                        z-index: -1;
+                        background-size: cover;
+                        // animation: anime 1s infinite;
+                        transition: ease;
+                        overflow: hidden;
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 50px;
+                        object-fit: cover;
+                        // transition: ease;
+                    }
+                }
+
+                .upcommingGames3:hover {
+                    #myVideo3 {
+                        display: block;
+
+                    }
+                }
+
+                .upcommingGames4 {
+                    height: 500px;
+                    width: 90vw;
+                    background-image: url(../../assets/gow2.png);
+                    border-radius: 50px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+
+                    #myVideo4 {
+                        display: none;
+                        background-attachment: fixed;
+                        z-index: -1;
+                        background-size: cover;
+                        // animation: anime 1s infinite;
+                        transition: ease;
+                        overflow: hidden;
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 50px;
+                        object-fit: cover;
+                    }
+                }
+
+                .upcommingGames4:hover {
+                    #myVideo4 {
+                        display: block;
+
+                    }
+                }
+
+            }
+        }
+
+    }
+}
+
+.smallSection {
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .heroMain{
+        h1{
+            font-size: 30px;
+        }
+    }
+}
+@media only screen and (max-width: 500px) {
+    .heroMain{
+        h1{
+            font-size: 20px;
+        }
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .heroMain {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        .sticky_parent {
+            display: none;
+        }
+        
+        .smallSection {
+            margin-top: 50px;
+            display: block;
+            width: 100%;
+            aspect-ratio: 16/9;
+            margin-inline: auto;
+
+            .carousel {
+                width: 95%;
+                margin-inline: auto;
+                border-radius: 20px;
+                display: flex;
+                .carousel-item {
+                    width: 100%;
+                    aspect-ratio: 16/9;
+
+
+                    .caroulesImg {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 20px;
+                    }
+                }
+
+                .carousel-control-prev{
+                    background-color: var(--primary-button-color);
+                    height:70px;
+                    width:70px;
+                    display: grid !important;
+                    place-items: center !important;
+                    margin-block: auto;
+                    border-radius: 50%;
+                    opacity: 0.9;
+                    .carousel-control-prev-icon{
+                        margin-right: 5px !important;
+                    }
+                }
+                .carousel-control-next{
+                    background-color: var(--primary-button-color);
+                    height:70px;
+                    width:70px;
+                    display: grid !important;
+                    place-items: center !important;
+                    margin-block: auto;
+                    border-radius: 50%;
+                    opacity: 0.9;
+                    .carousel-control-next-icon{
+                        margin-left: 5px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .heroMain {
+      
+        
+        .smallSection {
+            .carousel{
+
+                .carousel-control-prev{
+                    height:40px;
+                    width:40px;
+                    .carousel-control-prev-icon{
+                        margin-right: 5px !important;
+                        
+                        padding: 5px !important;
+                    }
+                }
+                .carousel-control-next{
+                    height:40px;
+                    width:40px;
+                    .carousel-control-next-icon{
+                        margin-left: 5px !important;
+                        padding: 5px !important;
+                    }
+                }
+            }
+        }
     }
 
-}
 }

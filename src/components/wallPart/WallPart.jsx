@@ -3,8 +3,8 @@ import './WallPart.scss'
 
 
 function WallPart() {
-      return (
-    <div className='main2'>
+      return ( 
+    <div className='wallPart' data-aos="zoom-in">
         
         <div  autoPlay='true' muted loop id="myVideo" >
       </div>

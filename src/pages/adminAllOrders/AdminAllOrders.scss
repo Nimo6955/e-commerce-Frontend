@@ -1,0 +1,108 @@
+.adminAllOrders {
+    background-color: #709775;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+
+    .banner {
+        text-align: center;
+        font-family: "MODERN";
+        padding-top: 20px;
+        color: var(--primary-button-color);
+        text-shadow: 0px 2px 5px black;
+    }
+
+    .orderContainer {
+        background-color: #263427;
+        width: 60%;
+        height: 70vh;
+        padding: 20px;
+        margin-top: 20px;
+        color: white;
+        border-radius: 20px;
+        overflow-y: scroll;
+
+        .singleOrder {
+            background-color: #415D43;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            padding: 20px;
+            .order {
+                button {
+                    padding: 5px 10px;
+                    border-radius: 20px;
+                    outline: none;
+                    border: none;
+                    background-color: #8fb996;
+                    margin-inline: 10px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+    ::-webkit-scrollbar-track{
+        background-color: #263427 !important;
+        width: 20px; 
+        border-top-right-radius: 10px;   
+        border-bottom-right-radius: 10px;   
+    }
+    ::-webkit-scrollbar-thumb{
+        background-color: #E2b144;
+        border-radius: 10px;
+        border: 10px solid #263427;
+        border-radius: 20px;
+        
+    }
+    ::-webkit-scrollbar{
+        border: 1px;  
+        width: 30px;    
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .adminAllOrders{
+        .orderContainer {
+            width: 95%;
+        }
+
+    } 
+}
+@media only screen and (max-width: 560px) {
+    .adminAllOrders{
+        .orderContainer {
+            .singleOrder{
+                .order{
+                    button {
+                        margin-inline: 2px;
+                    }
+
+                } 
+
+            }
+        }
+
+    } 
+}
+@media only screen and (max-width: 500px) {
+    .adminAllOrders{
+        .orderContainer {
+            .singleOrder{
+                .order{
+                    button {
+                        margin-inline: 2px;
+                        font-size: 10px;
+                    }
+
+                } 
+
+            }
+        }
+        ::-webkit-scrollbar{
+            display: none;   
+        }
+
+    } 
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './KeyboardAnimation.scss';
 import { gsap, ScrollTrigger } from "gsap/all";
 import img1 from '../../assets/cool2/frame_0001.jpeg';
+import mobileImg from '../../assets/frame_0001.png';
 import img2 from '../../assets/cool2/frame_0002.jpeg';
 import img3 from '../../assets/cool2/frame_0003.jpeg';
 import img4 from '../../assets/cool2/frame_0004.jpeg';
@@ -207,7 +208,7 @@ import img203 from '../../assets/cool2/frame_0203.jpeg';
 import img204 from '../../assets/cool2/frame_0204.jpeg';
 import img205 from '../../assets/cool2/frame_0205.jpeg';
 import img206 from '../../assets/cool2/frame_0206.jpeg';
-
+import kaVid from '../../assets/kaVid.mp4'
 
 function KeyboardAnimation() {
 
@@ -360,11 +361,56 @@ function KeyboardAnimation() {
             .to(".text3",   {opacity: 0, ease: "linear",}, "seventh")
             
     }
-    useEffect(() => {
-        preLoadImages();
-    }, []);
+    // useEffect(() => {
+    //     preLoadImages();
+    // }, []);
+
+    const textRef = useRef();
+    const [currentText, setCurrentText] = useState(0); // State to track current text index  
+
+    const texts = [  
+        {  
+            title: "Level Up Your Gaming!",  
+            description: "Explore our extensive collection of games and gear to enhance your playtime!"  
+        },  
+        {  
+            title: "Join the Gaming Revolution!",  
+            description: "Discover the latest titles and cutting-edge accessories designed for every gamer!"  
+        },  
+        {  
+            title: "Your Adventure Begins Here!",  
+            description: "Unlock a new realm of gaming with epic titles and gear tailored for you!"  
+        }  
+    ];  
+
+    function changeText() {  
+        let index = 0;  
+
+        const interval = setInterval(() => {  
+            // Animate the current text out  
+            gsap.to(textRef.current, { opacity: 0, duration: 1, onComplete: () => {  
+                // Update the text index after fade out  
+                index = (index + 1) % texts.length; // Cycle through text array  
+                setCurrentText(index); // Update the state with the new index  
+
+                // Animate the new text in  
+                gsap.fromTo(textRef.current, { opacity: 0 }, { opacity: 1, duration: 1 });  
+            }});  
+        }, 5000); // Change every 5 seconds to allow for 1 second of fade out and 1 second of fade in  
+
+        return () => clearInterval(interval); // Cleanup on unmount  
+    }   
+
+    useEffect(() => {  
+        preLoadImages();  
+        const intervalCleanup = changeText(); // Start text change  
+        return intervalCleanup; // Cleanup the interval on component unmount   
+    }, []); 
+
+
 
     return (
+        <>
         <div className='KeyboardAnimation'>
             <div className="parent">
                 <div className="child">
@@ -385,6 +431,18 @@ function KeyboardAnimation() {
                 </div>
             </div>
         </div>
+        <div className="KeyboardAnimationMob">
+            <div className="vidBox">
+                <div autoPlay='true' muted loop id="myVideo1" data-aos="zoom-in">
+                    <img className='vidImg' src={mobileImg}  />
+                </div>
+            </div>
+            <div className="txt" ref={textRef}>
+            <h4>{texts[currentText].title}</h4>  
+            <p>{texts[currentText].description}</p>  
+            </div>
+        </div>
+        </>
     );
 }
 

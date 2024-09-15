@@ -44,3 +44,13 @@
         text-align: center;
     }
 }
+@media only screen and (max-width:900px) {
+    .Admin{
+        .icon{
+            background-color: black;
+            .plus{
+                color: var(--primary-button-color);
+            }
+        }
+    }
+}

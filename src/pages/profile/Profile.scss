@@ -3,7 +3,7 @@
     height: calc(100vh - 60px);
 
     .leftPart {
-        flex: 1;
+        width: 310px;
         background-color: #263427;
 
         .nameContainer {
@@ -163,6 +163,7 @@
                 font-family: "MODERN";
                 color: var(--primary-button-color);
                 text-shadow: 2px 2px 5px black;
+                white-space: nowrap;
             }
         }
 
@@ -206,6 +207,30 @@
                 border: none;
                 background-color: var(--primary-button-color);
                 color: black;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1050px) {
+    .profileContainer{
+        .leftPart{
+            display: none;
+        
+        }   
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .profileContainer{
+        .leftPart{
+            display: none;
+        
+        }   
+        .rightPart{
+            .rightContainer{
+                input{
+                    width: 100%;
+                }
             }
         }
     }

@@ -19,12 +19,25 @@
                 // rotate: -50deg;
             }
 
-            .txt {
+            .txtTop {
                 text-align: center;
-                color: #000;
+                color: #fff;
                 font-family: "MODERN";
                 margin-top: 20px;
                 font-size: 50px;
+                line-height: 0.7;
+                text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000,
+                1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+
+            }
+            .txt {
+                text-align: center;
+                color: #fff;
+                font-family: "MODERN";
+                font-size: 50px;
+                line-height: 0.7;
+                text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000,
+                1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
             }
         }
 
@@ -204,5 +217,18 @@
 
     .Loader::-webkit-scrollbar {
         display: none !important;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .Mouse,.Chair,.Cd{
+        display: none;
+    }
+    .parantLoader{
+        .Loader{
+            .loaderTop{
+                width: 300px;
+            }
+        }
     }
 }

@@ -21,47 +21,54 @@ import Cart from './pages/cart/Cart';
 import Profile from './pages/profile/Profile';
 import ErrorPage from './pages/errorPage/ErrorPage';
 import AdminAllUsers from './pages/AdminAllUsers/AdminAllUsers';
+import AdminAllOrders from './pages/adminAllOrders/AdminAllOrders';
+import toast, { Toaster } from 'react-hot-toast';
+import Navbar from './components/navbar/Navbar';
 
 export const userContext = createContext()
 
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});  
+  
+  axios.defaults.withCredentials = true;  
+  
+  useEffect(() => {  
+    axios.get(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/auth/`)  
+      .then(response => {  
+        const allUsers = response.data.result.user;  
+        const token = localStorage.getItem('token');  
+        const decodedToken = jwtDecode(token);  
+        const curUser = allUsers.find(user => user._id === decodedToken.user._id); // use find instead of filter  
+        setUser(curUser);    
+  
+      })  
+      .catch(err => console.log(err));  
+  }, []); // Only run once on component mount
 
-
-  axios.defaults.withCredentials = true;
-
-  useEffect(() => {
-    axios.get(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/auth/`)
-      .then(user => {
-        console.log(user.data.result.user);
-        const allUsers = user.data.result.user;
-        const token = localStorage.getItem('token')
-        const decodedToken = jwtDecode(token);
-        const curUser = allUsers.filter(user => user._id == decodedToken.user._id);
-        setUser(curUser[0]);
-      })
-      .catch(err => console.log(err))
-  }, [])
+  
 
   return (
     <>
 
       <div className='App' id='App'>
+      <div><Toaster/></div>
         <userContext.Provider value={{user,setUser}}>
           <ProductContext>
             <Router>
+              {/* <Navbar karts={karts}/> */}
               <Routes>
-                <Route path='/' element={<Home user={user} />} />
-                <Route path='/allproducts' element={<AllProducts user={user} />} />
-                <Route path='/allproducts/:id' element={<SingleProductDetails />} />
-                <Route path='/cart' element={<Cart />} />
+                <Route path='/' element={<Home user={user}  />} />
+                <Route path='/allproducts' element={<AllProducts user={user}  />} />
+                <Route path='/allproducts/:id' element={<SingleProductDetails  />} />
+                <Route path='/cart' element={<Cart  />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/signup' element={<Signup />} />
-                <Route path='/profile' element={<Profile />} />
+                <Route path='/profile' element={<Profile  />} />
                 <Route path='/errorpage' element={<ErrorPage />} />
                 <Route path='/admin' element={<ProtectedRoute element={Admin} />} />
                 <Route path='/adminaddproduct/:id' element={<ProtectedRoute element={AdminAddProduct} />} />
                 <Route path='/adminallproducts/:id' element={<ProtectedRoute element={AdminAllproduct} />} />
+                <Route path='/adminAllOrders/:id' element={<ProtectedRoute element={AdminAllOrders} />} />
                 <Route path='/AdminAllUsers/:id' element={<ProtectedRoute element={AdminAllUsers} />} />
               </Routes>
             </Router>

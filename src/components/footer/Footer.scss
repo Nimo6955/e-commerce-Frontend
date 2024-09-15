@@ -1,76 +1,94 @@
-.Footer {
-    background-color: rgba($color: #000000, $alpha: 0.05);
-    padding-block: 20px;
-    margin-top: 80px;
-    .container{
-        display: flex;
-        flex-direction: column;
+.footer {
+    color: #F9EBDE;
+    background-color: #111D13;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 8vw;
+    padding-top: 80px;
+}
+
+.footer-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 80px;
+}
+
+.footer-content-left,
+.footer-content-right,
+.footer-content-center {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+.footer-content-left li,
+.footer-content-right li,
+.footer-content-center li {
+    list-style: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.footer-content-right ul {
+    padding-left: 10px;
+}
+
+.footer-content-right h5,
+.footer-content-center h5 {
+    color: var(--primary-button-color);
+    font-family: "MODERN";
+    white-space: nowrap;
+    text-shadow: 1px 1px 1px black;
+}
+
+.footer-social-icons .footerIcons {
+    width: 40px;
+    font-size: 30px;
+}
+
+.iconLink:hover{
+    .footerIcons{
+        color: var(--primary-button-color);
         
-        .content {
+    }
+}
+
+.footer hr {
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+    background-color: #F9EBDE;
+    border: none;
+}
+
+@media(max-width: 750px) {
+    .footer-content {
         display: flex;
-        justify-content: space-between;
-
-        .title {
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .footer-left {
-            .follow {
-                list-style: none;
-                display: flex;
-                gap: 8px;
-
-                li {
-                    width: 36px;
-                    height: 36px;
-                    border-radius: 50%;
-
-                    &:hover {
-                        background-color: white;
-                    }
-                }
-            }
-        }
-
-        .footer-right {
-            .company {
-                li {
-                    margin-top: 10px;
-                    color: var(--secondary-text-color);
-
-                    &:hover {
-                        color: var(--accent-color);
-                    }
-                }
-            }
-        }
-    }
-
-    .subfooter {
-        margin: auto;
         flex-direction: column;
-        margin-top: 40px;
-
-        .credit-card-img {
-            width: 200px;
-            text-align: center;
-            
-            img {
-                width: 100%;
-            }
-        }
-    }
-}
-}
-
-@media screen and (max-width: 768px) {
-    .Footer {
-        .content {
-            flex-direction: column;
-            gap: 40px;
-        }
+        gap: 35px;
     }
 
+    .footer-copyright {
+        text-align: center;
+    }
+}
+
+.Logo {
+
+    .foot_logo {
+        /* width:50%; */
+        height: 50px;
+        // aspect-ratio: 1/1;
+        filter: drop-shadow(0px 2px 5px black);
+
+    }
+
+    h2 {
+        font-family: "MODERN";
+        color: var(--primary-button-color);
+    }
 }

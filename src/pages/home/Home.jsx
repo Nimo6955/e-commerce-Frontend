@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Home.scss'
 import Hero from '../../components/hero/Hero'
 import Category from '../../components/category/Category'
@@ -17,18 +17,20 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import VideoSection from '../../components/videoSection/VideoSection'
 import KeyboardAnimation from '../../components/keyboardAnimation/KeyboardAnimation'
+import Productcontext from '../../components/contextProvider/contectState'
+import ProductMobile from '../../components/productMobile/ProductMobile'
+import { FaHeadphonesSimple } from "react-icons/fa6";
+import headphoneIconSkull from '../../assets/headphoneIconSkull2.png'
+import { Tooltip } from 'antd';
 
 
 
-
-
-function Home(user) {
-
+function Home({user}) {
   const navigate = useNavigate();
   const token = localStorage?.getItem('token')
-      const decodedToken = jwtDecode(token);
+      const decodedToken = token ? jwtDecode(token) : '';
     // console.log(decodedToken.user.role);
-    const role = decodedToken?.user.role
+    const role = decodedToken ? decodedToken?.user.role : ''
   
     
     
@@ -37,6 +39,13 @@ function Home(user) {
       navigate('/login')
       navigate(0)
     }
+
+    const context = useContext(Productcontext)
+    const { allProducts } = context;
+
+    const games = allProducts?.filter(product => product?.category == "Game")
+
+    
   const content = (
     <div>
       <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
@@ -51,7 +60,7 @@ function Home(user) {
     </div>
   );
 
-  const [loading, setLoading] = useState(true);  
+  const [loading, setLoading] = useState(true);  // loading = true
 
   useEffect(() => {  
       const timer = setTimeout(() => {  
@@ -62,6 +71,9 @@ function Home(user) {
           })
       }, 6000);  
 
+
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        const tooltipList = tooltipTriggerList.map((tooltipTriggerEl) => new Tooltip(tooltipTriggerEl));
       // Cleanup the timer when the component unmounts  
       return () => clearTimeout(timer);  
   }, []);  
@@ -91,19 +103,37 @@ function Home(user) {
       <WallPart/>
       <div className="collection container2">
         <div className="info">
-          <h2 className="heading">Our Top Pics</h2>
+          <h2 className="heading">Our Top Games</h2>
           <p className='subheading'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, amet!</p>
         </div>
         <div className="content">
-          <Product/>
+          {games?.map( product => (
+          <Product product={product} key={user?._id} />
+          ))}
+        </div>
+        <div className="mobileContent">
+        {games?.map( product => (
+          <ProductMobile product={product} key={user?._id} />
+          ))}
         </div>
       </div>
       {role === 'user' ? 
-      <Popover content={content}>  
+       <Tooltip title="customer support">
             <div className="webIcon">
-              <img className='webIconImg' src={Skull} alt="" />
+              <img className='webIconImg' style={{zIndex: '4'}}  src={Skull} alt="" />
+              <img src={headphoneIconSkull}  style={{
+                // color: 'white',
+                position: 'absolute',
+                left: '50%',
+                top: "20%",
+                transform: "translate(-50%,-50%)",
+                height: '90px',
+                width: '115px',
+                zIndex: '2',
+                // filter: "drop-shadow(0px 1px 2px white)"
+                }} />
             </div>
-      </Popover>
+       </Tooltip>
     : ''}
     <Footer/>
     </div>

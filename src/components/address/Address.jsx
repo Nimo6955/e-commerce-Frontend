@@ -186,7 +186,7 @@ function Address() {
                             <div className='allAddressContent'>
                                 <div className='addressDiv' rows={4} name="address" id="address">
                                     <h5>{address.name}</h5>
-                                    <h6> <FaPhoneAlt style={{ color: '#9bf900', marginRight: '10px', }} />{address.mobileNumber}</h6>
+                                    <h6> <FaPhoneAlt style={{ color: '#dfb244', marginRight: '10px', }} />{address.mobileNumber}</h6>
                                     <p><b> House No:</b> {address.houseNo},<b> Area:</b> {address.area},<b> Landmark: </b>{address.landmark},<b>City: </b> {address.city},<b> State:</b> {address.state},<b> Pincode: </b>{address.pincode}</p>
                                 </div>
                                 <div className='editBtnBox' onClick={() => showUpdateAddressModal(address?._id)}>
@@ -206,7 +206,7 @@ function Address() {
             <div className="AddAddressicon" onClick={showAddressModal}>
                 <FaPlus className='plus' />
             </div>
-            <Modal maskStyle={{backdropFilter: 'blur(8px)'}} open={isAddressModalOpen} onOk={handleAddressOk} okButtonProps={{ style: { display: 'none' } }} cancelButtonProps={{ style: { display: 'none' } }} onCancel={handleAddressCancel}>
+            <Modal maskStyle={{backdropFilter: 'blur(8px)'}}  style={{ top: 10 }}  open={isAddressModalOpen} onOk={handleAddressOk} okButtonProps={{ style: { display: 'none' } }} cancelButtonProps={{ style: { display: 'none' } }} onCancel={handleAddressCancel}>
                 <div className="addressModal">
                     <h4>Add New Address</h4>
                     <h6>CONTACT DETAILS</h6>
@@ -231,7 +231,7 @@ function Address() {
                     </div>
                 </div>
             </Modal>
-            <Modal maskStyle={{backdropFilter: 'blur(8px)'}} open={isUpdateAddressModalOpen} onOk={handleUpdateAddressOk} okButtonProps={{ style: { display: 'none' } }} cancelButtonProps={{ style: { display: 'none' } }} onCancel={handleUpdateAddressCancel}>
+            <Modal maskStyle={{backdropFilter: 'blur(8px)'}}  style={{ top: 10 }}  open={isUpdateAddressModalOpen} onOk={handleUpdateAddressOk} okButtonProps={{ style: { display: 'none' } }} cancelButtonProps={{ style: { display: 'none' } }} onCancel={handleUpdateAddressCancel}>
                 <div className="addressModal">
                     <h4>UPDATE YOUR ADDRESS</h4>
                     <h6>CONTACT DETAILS</h6>

@@ -48,3 +48,10 @@ a {
 .ant-modal-content{
     padding: 0px 0px !important;
 }
+
+.ant-popover-inner{
+    padding: 0px !important;
+}
+:where(.css-dev-only-do-not-override-1fumvat).ant-collapse>.ant-collapse-item >.ant-collapse-header .ant-collapse-arrow{
+    color: white;
+}

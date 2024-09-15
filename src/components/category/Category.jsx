@@ -1,8 +1,8 @@
 import React from 'react'
 import './Category.scss'
 import bg1 from '../../assets/new1.jpeg'
-import bg2 from '../../assets/new3.jpg'
-import bg3 from '../../assets/new2.jpg'
+import bg2 from '../../assets/new32.jpg'
+import bg3 from '../../assets/new22.jpg'
 import { Link, useNavigate } from 'react-router-dom'
 import AOS from 'aos';
 import 'aos/dist/aos.css';

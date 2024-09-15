@@ -91,3 +91,71 @@
         }
     }
 }
+
+@media only screen and (max-width: 1200px) {
+    .SignUp{
+        .canvas{
+            height: 300px;
+            width: 300px;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+    .SignUp{
+        .SignupContainer{
+            .main{
+                width: 450px;
+                .formImage{
+                    display: none;
+                }
+                .form{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 700px) {
+    .SignUp{
+        .canvas{
+            height: 200px;
+            width: 200px;
+        }
+        .SignupContainer{
+            .main{
+                width: 400px;
+                .formImage{
+                    display: none;
+                }
+                .form{
+                    width: 100%;
+                    padding: 30px;
+                }
+            }
+        }
+    }
+
+}
+@media only screen and (max-width: 400px) {
+    .SignUp{
+        .canvas{
+            height: 200px;
+            width: 200px;
+        }
+        .SignupContainer{
+            .main{
+                width: 300px;
+                .formImage{
+                    display: none;
+                }
+                .form{
+                    width: 100%;
+                    padding: 30px;
+                }
+            }
+        }
+    }
+
+}

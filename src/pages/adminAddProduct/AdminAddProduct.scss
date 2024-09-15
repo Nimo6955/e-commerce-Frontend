@@ -2,10 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     background-color: #709775;
 
-
+    .banner {
+        text-align: center;
+        font-family: "MODERN";
+        padding-top: 20px;
+        color: var(--primary-button-color);
+        text-shadow: 0px 2px 5px black;
+        margin-bottom: 10px;
+    }
     .container{
         display: flex;
         flex-direction: column;
@@ -13,8 +21,8 @@
         width: 500px;
         border-radius: 20px;
         background-color: #263327;
-        padding: 50px;
-
+        padding: 20px 50px;
+        margin-inline: 10px;
 
         label{
             color: white;
@@ -31,9 +39,26 @@
                 background-color: #415D43;
                 color: white;
             }
+            textarea{
+                margin-block: 5px;
+                padding: 10px 20px;
+                border-radius: 20px;
+                width: 100%;
+                border: none;
+                outline: none;
+                background-color: #415D43;
+                color: white;
+                resize: none;
+            }
             input::placeholder {
                 color: white;
             }
+            input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
             .priceContainer{
                 display: flex;
                 gap: 20px;
@@ -111,5 +136,35 @@
     cursor: pointer;
     .plus{
         font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .addProduct{
+        .container{
+            padding: 20px 20px  ;
+        .productImgae1,.productImgae2,.productImgae3{
+            width: 60px;
+        }
+        }
+    }
+}
+@media only screen and (max-width: 400px) {
+    .addProduct{
+        .container{
+            .productImgae{
+                width: 100px;
+
+
+                .uploadIcon{
+                    font-size: 40px;
+                    color: #A1CCA5;
+                }
+                h5{
+                    color: #A1CCA5;
+                    font-size: 12px;
+                }
+            }
+        }
     }
 }

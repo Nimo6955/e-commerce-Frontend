@@ -11,6 +11,9 @@ import { jwtDecode } from 'jwt-decode'
 import {Popover} from 'antd';
 import { FaPlus } from "react-icons/fa";
 import Skull from '../../assets/skull.png'
+import Add from '../../assets/adminAdd.gif'
+import toast from 'react-hot-toast';
+
 
 
 function AdminAddProduct() {
@@ -23,6 +26,7 @@ function AdminAddProduct() {
     const [category, setCategory] = useState('')
     const [old_price, setOld_price] = useState('')
     const [new_price, setNew_price] = useState('')
+    const [description, setDescription] = useState('')
     const [productImage1pre, setProductImage1pre] = useState()
     const [productImage3pre, setProductImage3pre] = useState()
     const [productImage2pre, setProductImage2pre] = useState()
@@ -38,15 +42,61 @@ function AdminAddProduct() {
         formData.append('category', category)
         formData.append('old_price', old_price)
         formData.append('new_price', new_price)
+        formData.append('description',description)
         formData.append('productImage', productImage1)
         formData.append('productImage', productImage2)
         formData.append('productImage', productImage3)
         formData.append('productImage', productImage4)
-        axios.post(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/product/createProduct`, formData)
-            .then(res => {
+
+        if(!productName || !category || !old_price || !new_price || !description || !productImage1 || !productImage2 || !productImage3 || !productImage4){
+          toast.error('All Fields And Images Are Required', {
+            style: {
+              border: '1px solid red',
+            //   padding: '16px',
+              color: '#ffffff',
+              background: 'black',
+            //   borderRadius: '30px'
+            },
+            iconTheme: {
+              primary: 'red',
+              secondary: '#000',
+            },
+            duration: 2000
+          });
+        }else{
+          axios.post(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/product/createProduct`, formData)
+          .then(res => {
                 console.log(res);
-            })
-            .catch(err => console.log(err))
+
+                toast.success('Product Added Successfully', {
+                  style: {
+                    border: '1px solid #9bf900',
+                  //   padding: '16px',
+                    color: '#ffffff',
+                    background: 'black',
+                  //   borderRadius: '30px'
+                  },
+                  iconTheme: {
+                    primary: '#9bf900',
+                    secondary: '#000',
+                  },
+                  duration: 2000
+                });
+
+
+
+                setProductName('')
+                setCategory('')
+                setNew_price('')
+                setOld_price('')
+                setDescription('')
+                setProductImage1pre(null)
+                setProductImage2pre(null)
+                setProductImage3pre(null)
+                setProductImage4pre(null)
+              })
+              .catch(err => console.log(err))
+            }
     };
 
     const handleImageChange1 = (e) => {
@@ -109,8 +159,8 @@ function AdminAddProduct() {
       navigate(0)
     }
     const content = (
-        <div>
-          <Link to={`/admin`} >
+        <div style={{padding: '20px'}}>
+           <Link to={`/admin`} >
           <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
             <img src={Skull} alt="" style={{height: '40px',width: '40px'}}/>
             <h5 style={{marginBlock: 'auto',color: 'black'}}>Admin Page</h5>
@@ -118,52 +168,68 @@ function AdminAddProduct() {
           </Link>
           <hr />
           <Link to={`/adminallproducts/${adminId}`}>
-          <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
-            <img src={list} alt="" style={{height: '40px',width: '40px'}}/>
-            <h5 style={{marginBlock: 'auto',color: 'black'}}>All Products</h5>
-          </div>
-          </Link >
+            <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
+              <img src={list} alt="" style={{ height: '40px', width: '40px' }} />
+              <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Products</h5>
+            </div>
+          </Link>
           <hr />
           {
-        role == 'Super Admin' ? (
-
-          <Link to={`/AdminAllUsers/${adminId}`}>
-      <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
-        <img src={user} alt=""style={{width: '40px',height: '30px'}} />
-        <h5 style={{marginBlock: 'auto',color: 'black'}}>All Users</h5>
-      </div>
-      </Link>
-      ) : ''}
-       {
-        role == 'Super Admin' ? (
-      <hr />
-    ) : ''}
+            role == 'Super Admin' ? (
+              <Link to={`/adminAllOrders/${adminId}`}>
+                <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
+                  <img src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
+                  <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Orders</h5>
+                </div>
+              </Link>
+            ) : ''}
+          {
+            role == 'Super Admin' ? (
+              <hr />
+            ) : ''}
+          {
+            role == 'Super Admin' ? (
+    
+              <Link to={`/AdminAllUsers/${adminId}`}>
+                <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
+                  <img src={user} alt="" style={{ width: '40px', height: '30px',marginBlock: '5px' }} />
+                  <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Users</h5>
+                </div>
+              </Link>
+            ) : ''}
+          {
+            role == 'Super Admin' ? (
+              <hr />
+            ) : ''}
           <Link>
-          <div onClick={handleLogout} className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
-          <MdLogout style={{fontSize: '40px', color: '#9bf900'}} />
-            <h5 style={{marginBlock: 'auto',color: 'black'}}>Log Out</h5>
-          </div>
+            <div onClick={handleLogout} className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
+              <MdLogout style={{ fontSize: '40px', color: '#9bf900' }} />
+              <h5 style={{ marginBlock: 'auto', color: 'black' }}>Log Out</h5>
+            </div>
           </Link>
         </div>
       );
     return (
         <>
             <div className='addProduct'>
+              <h1 className='banner'>Add Product</h1>
                 <div className="container">
                     <label htmlFor="productName">Product Name</label>
                     <input type="text" name="productName" id="productName" value={productName} onChange={(e) => setProductName(e.target.value)} />
                     <div className="priceContainer">
                         <div className="section1">
                             <label htmlFor="oldProductPrice">Old Price</label>
-                            <input type="text" name="oldProductPrice" id="oldProductPrice" value={old_price} onChange={(e) => setOld_price(e.target.value)} />
+                            <input type="number" name="oldProductPrice" id="oldProductPrice" value={old_price} onChange={(e) => setOld_price(e.target.value)} />
 
                         </div>
                         <div className="section2">
                             <label htmlFor="newProductPrice">Offer Price</label>
-                            <input type="text" name="newProductPrice" id="newProductPrice" value={new_price} onChange={(e) => setNew_price(e.target.value)} />
+                            <input type="number" name="newProductPrice" id="newProductPrice" value={new_price} onChange={(e) => setNew_price(e.target.value)} />
 
                         </div>
                     </div>
+                    <label htmlFor="productDescription">Product Description</label>
+                    <textarea type="text" name="productDescription" id="productDescription" value={description} onChange={(e) => setDescription(e.target.value)} />
 
                     <label htmlFor="productCategory">Category</label>
                     <select defaultValue={category} onChange={(e) => setCategory(e.target.value)} name="category" className='addProductSelector'>

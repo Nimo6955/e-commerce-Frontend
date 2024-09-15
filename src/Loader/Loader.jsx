@@ -18,6 +18,7 @@ function Loader() {
         </div>
         <div className="center">
           <img className='Headphones' src={Headphones} alt="" />
+          <h1 className='txtTop'>MANIAC</h1>
           <h1 className='txt'>GAMING</h1>
         </div>
       <img className='Mouse' src={Mouse} alt="" />

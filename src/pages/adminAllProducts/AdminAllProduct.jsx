@@ -17,6 +17,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MdLogout } from "react-icons/md";
 import Kart from '../../assets/adminKart.gif'
 import { FiUploadCloud } from 'react-icons/fi';
+import Add from '../../assets/adminAdd.gif'
+import list from '../../assets/adminList.gif';
+import toast from 'react-hot-toast';
 
 
 function AdminAllproduct() {
@@ -28,6 +31,8 @@ function AdminAllproduct() {
   const [new_price,setNew_price] = useState()
   const [old_price,setOld_price] = useState()
   const [category,setCategory] = useState()
+  const [description, setDescription] = useState('')
+
   const [productImage1,setProductImage1] = useState()
   const [productImage2,setProductImage2] = useState()
   const [productImage3,setProductImage3] = useState()
@@ -55,10 +60,19 @@ function AdminAllproduct() {
     setIsModalOpen(false);
   };
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const showEditModal = (id) => {
+  const [displayImg1, setDisplayImg1] = useState('');
+  const [displayImg2, setDisplayImg2] = useState('');
+  const [displayImg3, setDisplayImg3] = useState('');
+  const [displayImg4, setDisplayImg4] = useState('');
+
+  const showEditModal = (id,img1,img2,img3,img4) => {
     setIsEditModalOpen(true);
     console.log(id);
-    setId(id)
+    setId(id);
+    setDisplayImg1(img1)
+    setDisplayImg2(img2)
+    setDisplayImg3(img3)
+    setDisplayImg4(img4)
   };
 
   const handleEditOk = () => {
@@ -90,7 +104,6 @@ function AdminAllproduct() {
     fetchInfo();
   }, []);
 
-  console.log(allProducts);
   async function deleteProduct(id) {
     await axios.delete(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/product/deleteProduct`, { data: { id: id } })
       .then(res => {
@@ -118,59 +131,110 @@ function AdminAllproduct() {
     navigate(0)
   }
   const content = (
-    <div>
-      <Link to={`/admin`} >
-      <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
-        <img src={Skull} alt="" style={{height: '40px',width: '40px'}}/>
-        <h5 style={{marginBlock: 'auto',color: 'black'}}>Admin Page</h5>
-      </div>
-      </Link>
-      <hr />
+    <div style={{padding: '20px'}}>
+       <Link to={`/admin`} >
+          <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
+            <img src={Skull} alt="" style={{height: '40px',width: '40px'}}/>
+            <h5 style={{marginBlock: 'auto',color: 'black'}}>Admin Page</h5>
+          </div>
+          </Link>
+          <hr />
       <Link to={`/adminaddproduct/${adminId}`} >
-      <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
-        <img src={Kart} alt="" style={{height: '40px',width: '40px'}}/>
-        <h5 style={{marginBlock: 'auto',color: 'black'}}>Add Product</h5>
-      </div>
+        <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
+          <img src={Add} alt="" style={{ height: '40px', width: '40px' }} />
+          <h5 style={{ marginBlock: 'auto', color: 'black' }}>Add Product</h5>
+        </div>
       </Link>
       <hr />
       {
         role == 'Super Admin' ? (
+          <Link to={`/adminAllOrders/${adminId}`}>
+            <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
+              <img src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
+              <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Orders</h5>
+            </div>
+          </Link>
+        ) : ''}
+      {
+        role == 'Super Admin' ? (
+          <hr />
+        ) : ''}
+      {
+        role == 'Super Admin' ? (
 
           <Link to={`/AdminAllUsers/${adminId}`}>
-      <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
-        <img src={user} alt=""style={{width: '40px',height: '30px'}} />
-        <h5 style={{marginBlock: 'auto',color: 'black'}}>All Users</h5>
-      </div>
-      </Link>
-      ) : ''}
-       {
+            <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
+              <img src={user} alt="" style={{ width: '40px', height: '30px',marginBlock: '5px' }} />
+              <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Users</h5>
+            </div>
+          </Link>
+        ) : ''}
+      {
         role == 'Super Admin' ? (
-      <hr />
-    ) : ''}
+          <hr />
+        ) : ''}
       <Link>
-      <div onClick={handleLogout} className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
-      <MdLogout style={{fontSize: '40px', color: '#9bf900'}} />
-        <h5 style={{marginBlock: 'auto',color: 'black'}}>Log Out</h5>
-      </div>
+        <div onClick={handleLogout} className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
+          <MdLogout style={{ fontSize: '40px', color: '#9bf900' }} />
+          <h5 style={{ marginBlock: 'auto', color: 'black' }}>Log Out</h5>
+        </div>
       </Link>
     </div>
   );
 
   async function UpdateProduct(id) {
+
+    if(!productName || !category || !old_price || !new_price || !description){
+      toast.error('All Fields And Images Are Required', {
+        style: {
+          border: '1px solid red',
+        //   padding: '16px',
+          color: '#ffffff',
+          background: 'black',
+        //   borderRadius: '30px'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#000',
+        },
+        duration: 2000
+      });
+    }else{
+
     await axios.put(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/product/updateProduct/${id}`, 
        { id: id,
         productName: productName,
         old_price: old_price,
         new_price: new_price,
-        category: category
+        category: category,
+        description: description
        })
       .then(res => {
         // setSeed(Math.random())
         console.log(res);
         fetchInfo()
+
+        toast.success('Product Updated Successfully', {
+          style: {
+            border: '1px solid #9bf900',
+          //   padding: '16px',
+            color: '#ffffff',
+            background: 'black',
+          //   borderRadius: '30px'
+          },
+          iconTheme: {
+            primary: '#9bf900',
+            secondary: '#000',
+          },
+          duration: 2000
+        });
+
+
       })
       .catch(err => console.log(err))
       setIsEditModalOpen(false);
+    }
+
   };
   async function updateImage1(id) {
     const formData = new FormData()
@@ -271,7 +335,7 @@ const handleImageChange4 = (e) => {
 }
 
 function updateCompleteProduct(){
-  if(productName || new_price || old_price || category){
+  if(productName || new_price || old_price || category || description){
     UpdateProduct(id)
   }
   if(productImage1){
@@ -299,8 +363,8 @@ function updateCompleteProduct(){
               <li className="productLi">Product</li>
               <li className="titleLi">Title</li>
               <li className="priceLi">Old Price</li>
-              <li className="priceLi">new Price</li>
-              <li className="priceLi">Edit</li>
+              <li className="priceLi">New Price</li>
+              <li className="priceLi" id='editLi'>Edit</li>
               <li className="removeLi">Remove</li>
             </ul>
 
@@ -312,7 +376,15 @@ function updateCompleteProduct(){
                   <p className="name">{product?.productName}</p>
                   <p className="price">{product?.old_price}</p>
                   <p className="price">{product?.new_price}</p>
-                  <div className='editBtnBox' onClick={() => showEditModal(product._id)}>
+                  <div className='editBtnBox' onClick={() => {showEditModal(product._id,product?.productImage[0],product?.productImage[1],product?.productImage[2],product?.productImage[3]) ; setProductName(product?.productName); setCategory(product?.category) ; setOld_price(product?.old_price); setNew_price(product?.new_price); setDescription(product?.description)}}>
+                    <button className='productEdit' data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="Edit Product"><CiEdit className='EditIcon' /></button>
+                  </div>
+                  <div className="deleteBtnBox" onClick={() => showModal(product._id)}>
+                    <button className='productDelete' data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="Delete Product"><IoTrashBinOutline className='deleteIcon' /></button>
+                  </div>
+                </div>
+                <div className="mobileViewBtns">
+                <div className='editBtnBox' onClick={() => showEditModal(product._id,product?.productImage[0],product?.productImage[1],product?.productImage[2],product?.productImage[3])}>
                     <button className='productEdit' data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="Edit Product"><CiEdit className='EditIcon' /></button>
                   </div>
                   <div className="deleteBtnBox" onClick={() => showModal(product._id)}>
@@ -336,7 +408,7 @@ function updateCompleteProduct(){
           </div>
         </div>
       </Modal>
-      <Modal open={isEditModalOpen} onOk={handleEditOk} okButtonProps={{ style: { display: 'none' } }} cancelButtonProps={{ style: { display: 'none' } }} onCancel={handleEditCancel}>
+      <Modal open={isEditModalOpen} style={{ top: 10 }} onOk={handleEditOk} okButtonProps={{ style: { display: 'none' } }} cancelButtonProps={{ style: { display: 'none' } }} onCancel={handleEditCancel}>
         <div className='updateProduct'>
                 <div className="container">
                     <label htmlFor="productName"  >Product Name</label>
@@ -353,7 +425,8 @@ function updateCompleteProduct(){
 
                         </div>
                     </div>
-
+                    <label htmlFor="productDescription"  >Product Description</label>
+                    <textarea type="text" name="productDescription"  value={description} onChange={(e) => setDescription(e.target.value)}  id="productDescription"  />
                     <label htmlFor="productCategory">Category</label>
                     <select  name="category" className='addProductSelector' value={category}  onChange={(e) => setCategory(e.target.value)}>
                         <option value="Accessories">Accessories</option>
@@ -363,28 +436,34 @@ function updateCompleteProduct(){
                     </select>
                     <div className="AllImageContainer" style={{ display: 'flex', gap: '2px', alignItems: 'flex-end' }}>
 
-                        <label htmlFor='uploadInput' style={{ cursor: 'pointer' }}>
+                        <label htmlFor='uploadInput' style={{ cursor: 'pointer'  }}>
 
                             {productImage1pre ? (
-                                <img className='productImgae' src={productImage1pre} alt="" />
+                                <img className='productImgae' src={productImage1pre} alt=""/>
                             ) : (
-
-                                <div className="productImgae">
-                                    <FiUploadCloud className='uploadIcon' />
-                                    <h5 >Upload Image</h5>
+                                <>
+                                {/* <div className="productImgae"> */}
+                                    {/* <FiUploadCloud className='uploadIcon' /> */}
+                                    {/* <h5 >Upload Image</h5>   */}
                                     <input id='uploadInput' accept="image/*" type="file" onChange={handleImageChange1} style={{ display: 'none' }} />
-                                </div>
+                                {/* </div> */}
+                                    <img className='productImgae' src={displayImg1 && displayImg1} style={{border: '2px dashed white'}} alt="" />
+                                </>
                              )} 
                         </label>
                         <label htmlFor='uploadInput1' style={{ cursor: 'pointer' }}>
                             {productImage2pre ? (
                                 <img className='productImgae1' src={productImage2pre} alt="" />
                             ) : (
-                                <div className="productImgae1">
-                                    <FiUploadCloud className='uploadIcon1' />
+                              <>
+                                {/* // <div className="productImgae1"> */}
+                                    {/* <FiUploadCloud className='uploadIcon1' /> */}
                                     {/* <p >Upload Image</p> */}
                                     <input id='uploadInput1' type="file" onChange={handleImageChange2} style={{ display: 'none' }} />
-                                </div>
+                                    <img className='productImgae1' src={displayImg2 && displayImg2} alt="" style={{border: '2px dashed white'}}/>
+
+                                {/* // </div> */}
+                              </>
                             )} 
 
                         </label>
@@ -392,22 +471,30 @@ function updateCompleteProduct(){
                             {productImage3pre ? (
                                 <img className='productImgae2' src={productImage3pre} alt="" />
                             ) : (
-                                <div className="productImgae2">
-                                    <FiUploadCloud className='uploadIcon2' />
+                              <>
+                                {/* <div className="productImgae2"> */}
+                                    {/* <FiUploadCloud className='uploadIcon2' /> */}
                                     {/* <p >Upload Image</p> */}
                                     <input id='uploadInput2' type="file" onChange={handleImageChange3} style={{ display: 'none' }} />
-                                </div>
+                                    <img className='productImgae2' src={displayImg3 && displayImg3} alt="" style={{border: '2px dashed white'}}/>
+                                    
+                                {/* </div> */}
+                            </>
                             )}
                         </label>
                         <label htmlFor='uploadInput3' style={{ cursor: 'pointer' }}>
                             {productImage4pre ? (
                                 <img className='productImgae3' src={productImage4pre} alt="" />
                             ) : (
-                                <div className="productImgae3">
-                                    <FiUploadCloud className='uploadIcon3' />
+                              <>
+                                {/* <div className="productImgae3"> */}
+                                    {/* <FiUploadCloud className='uploadIcon3' /> */}
                                     {/* <p >Upload Image</p> */}
                                     <input id='uploadInput3' type="file" onChange={handleImageChange4} style={{ display: 'none' }} />
-                                </div>
+                                    <img className='productImgae3' src={displayImg4 && displayImg4} alt="" style={{border: '2px dashed white'}}/>
+                                    
+                                {/* </div> */}
+                              </>
                             )}
                         </label>
                     </div>

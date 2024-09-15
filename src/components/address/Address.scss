@@ -17,7 +17,7 @@
 
     .rightContainer {
         background-color: #263427;
-        height: 400px;
+        height: calc(100vh - 150px);
         width: 90%;
         margin-inline: auto;
         // margin-top: 20px;
@@ -303,4 +303,27 @@
 
         }
     }
+}
+@media only screen and (max-width: 1050px) {
+    .AddAddressicon{
+        right: 10%;
+    }
+    
+}
+@media only screen and (max-width: 600px) {
+    .address{
+        .rightContainer{
+            .addressContainer{
+                .allAddressContent{
+                    .deleteBtnBox{
+                        right: 20px;
+                    }
+                    .editBtnBox{
+                        right: 70px;
+                    }
+                }
+            }
+        }
+    }
+    
 }

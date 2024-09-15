@@ -17,14 +17,7 @@
             top: 0;
             left: 0;
             background-color: #f3f7fa;
-            
-            #frame{
-                img{
-                    border: 10px solid red;
-                    
-                }
-                
-            }
+        
             .text1,.text2,.text3{
                 position: absolute;
                 top: 50%;
@@ -45,5 +38,60 @@
                 transform: translate(-50%,-50%);
             }
         }
+    }
+}
+
+.KeyboardAnimationMob{
+    display: none;
+    position: relative;
+    width: 100%;
+    .vidBox{
+        width: 100%;
+        aspect-ratio: 9/9;
+    overflow-y: hidden;
+    // position: relative;
+    #myVideo1{
+        background-attachment: fixed;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+            object-fit: cover;
+            object-position: center;
+        // z-index: -1;
+        filter: brightness(70%);
+        .vidImg{
+            height: 100%;
+            width: 100%;
+
+        }
+    }
+    }
+
+    .txt{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        h4{
+            white-space: nowrap;
+            color: var(--primary-button-color);
+            text-shadow: 0px 2px 5px black;
+            font-family: "MODERN";
+            font-size: 15px;
+        }    
+        p{
+            color: #ffffff;
+            text-shadow: 0px 2px 5px black;
+            // display: none;
+            
+        }
+    }
+}
+@media only screen and (max-width: 800px) {
+    .KeyboardAnimationMob{
+        display: block;
+    }
+    .KeyboardAnimation{
+        display: none;
     }
 }

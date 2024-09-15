@@ -4,12 +4,13 @@ import axios from 'axios';
 import { FaPlus } from "react-icons/fa";
 import { Popover } from 'antd';
 import Kart from '../../assets/adminKart.gif'
-import list from '../../assets/adminList.gif'
 import user from '../../assets/adminUsers.gif'
 import { Link, useNavigate } from 'react-router-dom';
 import { MdErrorOutline, MdLogout } from "react-icons/md";
 import { jwtDecode } from 'jwt-decode'
+import list from '../../assets/adminList.gif'
 import Skull from '../../assets/skull.png'
+import Add from '../../assets/adminAdd.gif'
 
 
 function AdminAllUsers() {
@@ -23,6 +24,8 @@ function AdminAllUsers() {
   const decodedToken = jwtDecode(token);
   let adminId = decodedToken.user._id;
 
+  const role = decodedToken.user.role
+
 
   function handleLogout() {
     localStorage.removeItem('token')
@@ -30,19 +33,18 @@ function AdminAllUsers() {
     navigate(0)
   }
 
-
   const content = (
-    <div>
-      <Link to={`/admin`}>
+    <div style={{ padding: '20px' }}>
+      <Link to={`/admin`} >
         <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-          <img src={Skull} alt="" style={{ width: '40px', height: '40px' }} />
+          <img src={Skull} alt="" style={{ height: '40px', width: '40px' }} />
           <h5 style={{ marginBlock: 'auto', color: 'black' }}>Admin Page</h5>
         </div>
       </Link>
       <hr />
       <Link to={`/adminaddproduct/${adminId}`} >
         <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-          <img src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
+          <img src={Add} alt="" style={{ height: '40px', width: '40px' }} />
           <h5 style={{ marginBlock: 'auto', color: 'black' }}>Add Product</h5>
         </div>
       </Link>
@@ -54,6 +56,19 @@ function AdminAllUsers() {
         </div>
       </Link>
       <hr />
+      {
+        role == 'Super Admin' ? (
+          <Link to={`/adminAllOrders/${adminId}`}>
+            <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
+              <img src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
+              <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Orders</h5>
+            </div>
+          </Link>
+        ) : ''}
+      {
+        role == 'Super Admin' ? (
+          <hr />
+        ) : ''}
       <Link>
         <div onClick={handleLogout} className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
           <MdLogout style={{ fontSize: '40px', color: '#9bf900' }} />
@@ -96,7 +111,7 @@ function AdminAllUsers() {
       <div className='AdminAllusers'>
         <h1>SUPER ADMIN PAGE</h1>
         <div className="container" key={seed}>
-            <h5 style={{fontFamily: 'MODERN', color: '#9bf900'}}>All Users</h5>
+          <h5 style={{ fontFamily: 'MODERN', color: '#9bf900' }}>All Users</h5>
           {users?.map((user) =>
             <div className="usersContainer">
 

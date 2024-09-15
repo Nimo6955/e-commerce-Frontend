@@ -1,106 +1,202 @@
-.LogIn{
+.LogIn {
     position: relative;
-    .canvas{
-    height: 500px;
-    width: 500px;
-    position: absolute;
-    left: 0;
-    bottom: 0%;
-    touch-action: none;
-}
 
-.loginContainer{
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-color: #A1CCA5;
+    .canvas {
+        height: 500px;
+        width: 500px;
+        position: absolute;
+        left: 0;
+        bottom: 0%;
+        touch-action: none;
+    }
 
-    .main{
-        height: fit-content;
-        background-color: #111D13;
-        width: 800px;
+    .loginContainer {
         display: flex;
-        border-radius: 20px;
-        
-        // justify-content: space-between;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-color: #A1CCA5;
 
-        .formImage{
-            height: max;
-            width: 350px;
+        .main {
+            height: fit-content;
+            background-color: #111D13;
+            width: 800px;
+            display: flex;
+            border-radius: 20px;
 
-            .objImg{
-                height: 100%;
-                width: 100%;
-                img{
+            // justify-content: space-between;
+
+            .formImage {
+                height: max;
+                width: 350px;
+
+                .objImg {
                     height: 100%;
                     width: 100%;
-                    object-fit: cover;
-                    border-top-left-radius: 20px;    
-                    border-bottom-left-radius: 20px;    
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                        border-top-left-radius: 20px;
+                        border-bottom-left-radius: 20px;
+                    }
                 }
             }
-        }
-        .form{
-            padding: 50px;
-            width: 60%;
-            h2{
-                color: white;
-                color: var(--primary-button-color);
-                font-family: 'MODERN';
-            }
-            .mainForm{
-                display: flex;
-                flex-direction: column;
-                margin-top: 50px;
-                .inputs{
+
+            .form {
+                padding: 50px;
+                width: 60%;
+
+                h2 {
+                    color: white;
+                    color: var(--primary-button-color);
+                    font-family: 'MODERN';
+                }
+
+                .mainForm {
                     display: flex;
                     flex-direction: column;
-                    input{
-                        margin-block: 20px;
-                        padding: 10px 20px;
-                        border-radius: 20px;
-                        width: 100%;
-                        border: none;
-                        outline: none;
-                        background-color: #415D43;
-                        color: white;
-                    }
-                    input::placeholder {
-                        color: white;
+                    margin-top: 50px;
+
+                    .inputs {
+                        display: flex;
+                        flex-direction: column;
+
+                        input {
+                            margin-block: 20px;
+                            padding: 10px 20px;
+                            border-radius: 20px;
+                            width: 100%;
+                            border: none;
+                            outline: none;
+                            background-color: #415D43;
+                            color: white;
+                        }
+
+                        input::placeholder {
+                            color: white;
+                        }
                     }
                 }
-            }
-            button{
-                margin-inline: auto;
-                padding: 10px 40px;
-                margin-top: 20px;
-                border-radius: 20px;
-                border: none;
-                outline: none;
-                background-color: var(--primary-button-color);
-                font-weight: 650;
-            }
-            // button:hover{
-            //     background-color: #bee6c2;
-            // }
-            p{
-                text-align: center;
-                color: white;
 
-            }
-            .forget{
-                margin-top: 40px;
-                width: fit-content;
-                margin-inline: auto;
-            }
-            .forget:hover{
-                color: var(--primary-button-color);
-                text-decoration: underline;
-                cursor: pointer;
+                button {
+                    margin-inline: auto;
+                    padding: 10px 40px;
+                    margin-top: 20px;
+                    border-radius: 20px;
+                    border: none;
+                    outline: none;
+                    background-color: var(--primary-button-color);
+                    font-weight: 650;
+                }
 
+                // button:hover{
+                //     background-color: #bee6c2;
+                // }
+                p {
+                    text-align: center;
+                    color: white;
+
+                }
+
+                .forget {
+                    margin-top: 40px;
+                    width: fit-content;
+                    margin-inline: auto;
+                }
+
+                .forget:hover {
+                    color: var(--primary-button-color);
+                    text-decoration: underline;
+                    cursor: pointer;
+
+                }
             }
         }
     }
 }
+
+.inputBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .ModalInput {
+        width: 70%;
+        margin-left: 20px;
+        padding: 4px 10px;
+        border-radius: 15px;
+        outline: none;
+        border: none;
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .LogIn{
+        .canvas{
+            height: 300px;
+            width: 300px;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+    .LogIn{
+        .loginContainer{
+            .main{
+                width: 450px;
+                .formImage{
+                    display: none;
+                }
+                .form{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 700px) {
+    .LogIn{
+        .canvas{
+            height: 200px;
+            width: 200px;
+        }
+        .loginContainer{
+            .main{
+                width: 400px;
+                .formImage{
+                    display: none;
+                }
+                .form{
+                    width: 100%;
+                    padding: 30px;
+                }
+            }
+        }
+    }
+
+}
+@media only screen and (max-width: 400px) {
+    .LogIn{
+        .canvas{
+            height: 200px;
+            width: 200px;
+        }
+        .loginContainer{
+            .main{
+                width: 300px;
+                .formImage{
+                    display: none;
+                }
+                .form{
+                    width: 100%;
+                    padding: 30px;
+                }
+            }
+        }
+    }
+
 }

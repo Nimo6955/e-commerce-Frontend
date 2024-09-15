@@ -10,7 +10,6 @@ function CartCard({product}) {
 
   const image = product?.productImage ? product?.productImage[0] : ''
  
-  console.log(product);
   return (  
     <>    
       <div className="productscart">  
