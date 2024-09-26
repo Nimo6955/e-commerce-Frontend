@@ -7,16 +7,22 @@ import { Modal, Popover } from 'antd';
 import { IoReorderThree, IoTrashBinOutline } from 'react-icons/io5';
 import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 import toast from "react-hot-toast";
-
+import No_order from '../../assets/Shrug.gif'
+import { useNavigate } from 'react-router-dom';
 
 function MyOrders() {
     const { user } = useContext(userContext);
     const [allOrders, setAllOrders] = useState([]);
 
-
+    const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [id, setId] = useState()
     const [status, setstatus] = useState()
+
+    function idk(id) {
+        console.log(id);
+        navigate(`/allproducts/${id}`)
+    }
     const showModal = (id) => {
         setIsModalOpen(true);
         setId(id)
@@ -99,12 +105,13 @@ function MyOrders() {
                                 {/* Loop through each item's product in the current order */}
                                 <div style={{ display: 'flex', flexDirection: 'column' }} className="">
                                     {order.items.map(item => (
+                                        
                                         <>
                                         <div key={item._id} className="singleOrdersLeftPart  position-relative">
                                             <div className='orderProductNameNImg'>
 
-                                                <img style={{ height: '100px', width: '100px' }} src={item.product.productImage[0]} alt={item.product.productName} />
-                                                <h5>{item.product.productName}</h5>
+                                                <img onClick={()=> idk(item.product._id)} loading='lazy' style={{ height: '100px', width: '100px' }} src={item.product.productImage[0]} alt={item.product.productName} />
+                                                <h5 onClick={()=> idk(item.product._id)}>{item.product.productName}</h5>
                                             </div>
                                             {/* <h6>quantity: {item.quantity}</h6> */}
                                       <span style={{top: '5px',right: '5px',background: '#e0b146',color: '#415d43'}} class="position-absolute  badge rounded-pill ">
@@ -132,7 +139,11 @@ function MyOrders() {
                             </div>
                         ))
                     ) : (
-                        <p style={{ color: 'white' }}>No orders found.</p>
+                        <div className='no_order'>
+                        <img loading='lazy' src={No_order} alt="" />
+                        <p >No orders found</p>
+                        </div>
+
                     )}
                 </div>
             </div>
@@ -140,7 +151,7 @@ function MyOrders() {
                 <div className="deleteConfirmbox" style={{padding: '20px'}}>
                     <h6>Delete this order ?</h6>
                     <div className="imgBox">
-                        <img className='confirmGif' src={confirm} alt="" />
+                        <img loading='lazy' className='confirmGif' src={confirm} alt="" />
                     </div>
                     <div className="btns">
                         <button className='deleteBtn' onClick={() => deleteOrder(id)}>Delete</button>

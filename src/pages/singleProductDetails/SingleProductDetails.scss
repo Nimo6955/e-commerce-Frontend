@@ -258,7 +258,17 @@
     background-color: var(--primary-button-color) !important;
     margin-bottom: 80px !important;
 }
-
+:where(.css-dev-only-do-not-override-1fumvat).ant-image {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+:where(.css-1fumvat).ant-image{
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    
+}
 @media only screen and (max-width: 1000px) {
     .SingleProductDetails {
         gap: 20px;

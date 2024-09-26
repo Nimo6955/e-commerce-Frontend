@@ -12,12 +12,29 @@ import toast from "react-hot-toast";
 import ConfettiExplosion from 'react-confetti-explosion';
 import AddToCartGif from '../../assets/AddToCart.gif'
 import SuccessfulPurchase from '../../assets/SuccessfulPurchase.gif'
+import ErrorPage from "../errorPage/ErrorPage";
 
 function Cart() {
     const { user, setUser } = useContext(userContext);
     const [isExploding, setIsExploding] = useState(false);
     const [uniqueProducts, setUniqueProducts] = useState([]);
     const navigate = useNavigate()
+
+    const token = localStorage?.getItem('token');  
+    function idk(id) {
+        console.log(id);
+        navigate(`/allproducts/${id}`)
+    }
+
+    const validateToken = (token) => {   
+      return typeof token === 'string' && token.split('.').length === 3;  
+    };  
+  
+    if (!validateToken(token) && token) {  
+      console.error('Invalid token format');
+        
+      return <ErrorPage/>
+    }  
     async function fetchKarts() {
         if (!user) return;
 
@@ -230,8 +247,8 @@ function Cart() {
                         {uniqueProducts?.map((product) => (
                             <div className="productscart" key={product?._id}>
                                 <div className="xtraDiv">
-                                    <img className="productImg" src={product?.productImage && product?.productImage[0]} alt="" />
-                                    <p className="name">{product?.productName}</p>
+                                    <img style={{cursor: 'pointer'}} onClick={() => idk(product._id)} loading='lazy' className="productImg" src={product?.productImage && product?.productImage[0]} alt="" />
+                                    <p style={{cursor: 'pointer'}} onClick={() => idk(product._id)} className="name">{product?.productName}</p>
                                     <p className="price">{product?.new_price}</p>
                                     <p className="Quantity" id='try'>
                                         <CiCircleMinus className='quantityIcon' onClick={() => decrementQuantity(product._id)} />
@@ -274,8 +291,8 @@ function Cart() {
 
             ) : (
                 <div className="emptyKart">
-                    <h1 className="emptyKartTxt">Your Cart is Empty</h1>
-                    <img src={AddToCartGif} alt="" />
+                    <h1 className="emptyKartTxt">{!token ? 'Log in to access Cart' : 'Your Cart is Empty'}</h1>
+                    <img loading='lazy' src={AddToCartGif} alt="" />
                 </div>
             )}
 
@@ -283,7 +300,7 @@ function Cart() {
                 <div className="deleteConfirmboxKart" style={{ padding: '20px' }}>
                     <h6>Remove this item from cart</h6>
                     <div className="imgBox">
-                        <img className='confirmGif' src={confirm} alt="" />
+                        <img loading='lazy' className='confirmGif' src={confirm} alt="" />
                     </div>
                     <div className="btns">
                         <button className='deleteBtn' onClick={() => removeProduct(id)}>Remove</button>
@@ -295,7 +312,7 @@ function Cart() {
                 <div className="orderCreatedBox" style={{ padding: '20px' }}>
                     <h6>Order Created !!</h6>
                     <div className="imgBox">
-                        <img className='confirmGif' src={SuccessfulPurchase} alt="" />
+                        <img loading='lazy' className='confirmGif' src={SuccessfulPurchase} alt="" />
                     </div>
                     <div className="btns">
                         <button className='deleteBtn' onClick={() => navigate('/profile', { state: "orders" })}>Go To My Orders</button>

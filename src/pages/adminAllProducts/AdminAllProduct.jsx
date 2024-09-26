@@ -12,7 +12,7 @@ import user from '../../assets/adminUsers.gif'
 import { jwtDecode } from 'jwt-decode'
 import {Popover} from 'antd';
 import { FaPlus } from "react-icons/fa";
-import Skull from '../../assets/skull.png'
+import Skull from '../../assets/skullLogo.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { MdLogout } from "react-icons/md";
 import Kart from '../../assets/adminKart.gif'
@@ -110,6 +110,21 @@ function AdminAllproduct() {
         // setSeed(Math.random())
         console.log(res);
         fetchInfo()
+
+        toast.success('Product Deleted Successfully', {
+          style: {
+            border: '1px solid #9bf900',
+          //   padding: '16px',
+            color: '#ffffff',
+            background: 'black',
+          //   borderRadius: '30px'
+          },
+          iconTheme: {
+            primary: '#9bf900',
+            secondary: '#000',
+          },
+          duration: 2000
+        });
       })
       .catch(err => console.log(err))
       setIsModalOpen(false);
@@ -133,15 +148,17 @@ function AdminAllproduct() {
   const content = (
     <div style={{padding: '20px'}}>
        <Link to={`/admin`} >
-          <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
-            <img src={Skull} alt="" style={{height: '40px',width: '40px'}}/>
-            <h5 style={{marginBlock: 'auto',color: 'black'}}>Admin Page</h5>
+       <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
+          <div className="" style={{background: '#000', height: '40px', width: '40px', borderRadius: '50%',paddingTop: '2px'}}>
+          <img loading='lazy' src={Skull} alt="" style={{ height: '40px', width: '40px' }} />
           </div>
+          <h5 style={{ marginBlock: 'auto', color: 'black' }}>Admin Page</h5>
+        </div>
           </Link>
           <hr />
       <Link to={`/adminaddproduct/${adminId}`} >
         <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-          <img src={Add} alt="" style={{ height: '40px', width: '40px' }} />
+          <img loading='lazy' src={Add} alt="" style={{ height: '40px', width: '40px' }} />
           <h5 style={{ marginBlock: 'auto', color: 'black' }}>Add Product</h5>
         </div>
       </Link>
@@ -150,7 +167,7 @@ function AdminAllproduct() {
         role == 'Super Admin' ? (
           <Link to={`/adminAllOrders/${adminId}`}>
             <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-              <img src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
+              <img loading='lazy' src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
               <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Orders</h5>
             </div>
           </Link>
@@ -164,7 +181,7 @@ function AdminAllproduct() {
 
           <Link to={`/AdminAllUsers/${adminId}`}>
             <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-              <img src={user} alt="" style={{ width: '40px', height: '30px',marginBlock: '5px' }} />
+              <img loading='lazy' src={user} alt="" style={{ width: '40px', height: '30px',marginBlock: '5px' }} />
               <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Users</h5>
             </div>
           </Link>
@@ -175,7 +192,7 @@ function AdminAllproduct() {
         ) : ''}
       <Link>
         <div onClick={handleLogout} className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-          <MdLogout style={{ fontSize: '40px', color: '#9bf900' }} />
+          <MdLogout style={{ fontSize: '30px', color: '#9bf900' }} />
           <h5 style={{ marginBlock: 'auto', color: 'black' }}>Log Out</h5>
         </div>
       </Link>
@@ -350,6 +367,15 @@ function updateCompleteProduct(){
   if(productImage4){
     updateImage4(id)
   }
+  setProductImage1(null)
+  setProductImage2(null)
+  setProductImage3(null)
+  setProductImage4(null)
+  setProductImage1pre(null)
+  setProductImage2pre(null)
+  setProductImage3pre(null)
+  setProductImage4pre(null)
+  
 }
   return (
     <>
@@ -372,7 +398,7 @@ function updateCompleteProduct(){
             {allProducts?.map((product) => (
               <div className='allProductBox' >
                 <div className="productsCard">
-                  <img className="productImg" src={product?.productImage[0]} alt="" />
+                  <img loading='lazy' className="productImg" src={product?.productImage[0]} alt="" />
                   <p className="name">{product?.productName}</p>
                   <p className="price">{product?.old_price}</p>
                   <p className="price">{product?.new_price}</p>
@@ -399,8 +425,9 @@ function updateCompleteProduct(){
       </div>
       <Modal open={isModalOpen} onOk={handleOk} okButtonProps={{ style: { display: 'none' } }} cancelButtonProps={{ style: { display: 'none' } }} onCancel={handleCancel}>
         <div className="deleteConfirmbox">
+          <h5 style={{padding: '10px'}}>Delete This Product ?</h5>
           <div className="imgBox">
-            <img className='confirmGif' src={confirm} alt="" />
+            <img loading='lazy' className='confirmGif' src={confirm} alt="" />
           </div>
           <div className="btns">
             <button className='deleteBtn' onClick={() => deleteProduct(id)}>Delete</button>
@@ -439,7 +466,7 @@ function updateCompleteProduct(){
                         <label htmlFor='uploadInput' style={{ cursor: 'pointer'  }}>
 
                             {productImage1pre ? (
-                                <img className='productImgae' src={productImage1pre} alt=""/>
+                                <img loading='lazy' className='productImgae' src={productImage1pre} alt=""/>
                             ) : (
                                 <>
                                 {/* <div className="productImgae"> */}
@@ -447,20 +474,20 @@ function updateCompleteProduct(){
                                     {/* <h5 >Upload Image</h5>   */}
                                     <input id='uploadInput' accept="image/*" type="file" onChange={handleImageChange1} style={{ display: 'none' }} />
                                 {/* </div> */}
-                                    <img className='productImgae' src={displayImg1 && displayImg1} style={{border: '2px dashed white'}} alt="" />
+                                    <img loading='lazy' className='productImgae' src={displayImg1 && displayImg1} style={{border: '2px dashed white'}} alt="" />
                                 </>
                              )} 
                         </label>
                         <label htmlFor='uploadInput1' style={{ cursor: 'pointer' }}>
                             {productImage2pre ? (
-                                <img className='productImgae1' src={productImage2pre} alt="" />
+                                <img loading='lazy' className='productImgae1' src={productImage2pre} alt="" />
                             ) : (
                               <>
                                 {/* // <div className="productImgae1"> */}
                                     {/* <FiUploadCloud className='uploadIcon1' /> */}
                                     {/* <p >Upload Image</p> */}
                                     <input id='uploadInput1' type="file" onChange={handleImageChange2} style={{ display: 'none' }} />
-                                    <img className='productImgae1' src={displayImg2 && displayImg2} alt="" style={{border: '2px dashed white'}}/>
+                                    <img loading='lazy' className='productImgae1' src={displayImg2 && displayImg2} alt="" style={{border: '2px dashed white'}}/>
 
                                 {/* // </div> */}
                               </>
@@ -469,14 +496,14 @@ function updateCompleteProduct(){
                         </label>
                         <label htmlFor='uploadInput2' style={{ cursor: 'pointer' }}>
                             {productImage3pre ? (
-                                <img className='productImgae2' src={productImage3pre} alt="" />
+                                <img loading='lazy' className='productImgae2' src={productImage3pre} alt="" />
                             ) : (
                               <>
                                 {/* <div className="productImgae2"> */}
                                     {/* <FiUploadCloud className='uploadIcon2' /> */}
                                     {/* <p >Upload Image</p> */}
                                     <input id='uploadInput2' type="file" onChange={handleImageChange3} style={{ display: 'none' }} />
-                                    <img className='productImgae2' src={displayImg3 && displayImg3} alt="" style={{border: '2px dashed white'}}/>
+                                    <img loading='lazy' className='productImgae2' src={displayImg3 && displayImg3} alt="" style={{border: '2px dashed white'}}/>
                                     
                                 {/* </div> */}
                             </>
@@ -484,14 +511,14 @@ function updateCompleteProduct(){
                         </label>
                         <label htmlFor='uploadInput3' style={{ cursor: 'pointer' }}>
                             {productImage4pre ? (
-                                <img className='productImgae3' src={productImage4pre} alt="" />
+                                <img loading='lazy' className='productImgae3' src={productImage4pre} alt="" />
                             ) : (
                               <>
                                 {/* <div className="productImgae3"> */}
                                     {/* <FiUploadCloud className='uploadIcon3' /> */}
                                     {/* <p >Upload Image</p> */}
                                     <input id='uploadInput3' type="file" onChange={handleImageChange4} style={{ display: 'none' }} />
-                                    <img className='productImgae3' src={displayImg4 && displayImg4} alt="" style={{border: '2px dashed white'}}/>
+                                    <img loading='lazy' className='productImgae3' src={displayImg4 && displayImg4} alt="" style={{border: '2px dashed white'}}/>
                                     
                                 {/* </div> */}
                               </>

@@ -141,8 +141,10 @@ input::-webkit-inner-spin-button {
 
 @media only screen and (max-width: 500px) {
     .addProduct{
+        padding-inline: 10px;
         .container{
-            padding: 20px 20px  ;
+            padding: 20px 20px;
+            width: 100%;
         .productImgae1,.productImgae2,.productImgae3{
             width: 60px;
         }

@@ -135,13 +135,13 @@ const Karts = getUniqueIds(user?.karts);
           <div className="nav-center">
             <Link to="/" className="nav-center">
               <h3>MANIAC</h3>
-              <img className='banner' src={Logo} alt="" />
+              <img loading='lazy' className='banner' src={Logo} alt="" />
               <h3>GAMING</h3>
             </Link>
           </div>
           <div className="nav-right">
             <div className="nav-cartNav hover-link" >
-              <img src={Icon} className="iconNav" onClick={routToKart} />
+              <img loading='lazy' src={Icon} className="iconNav" onClick={routToKart} />
               <span className="cart-count center">{Karts?.length}</span>
             </div>
             <div className="popoverDesktop"style={{ marginBlock: 'auto' }}>

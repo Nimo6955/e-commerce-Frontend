@@ -34,14 +34,14 @@ function Admin() {
     <div style={{padding: '20px'}}>
       <Link to={`/adminaddproduct/${adminId}`} >
         <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-          <img src={Add} alt="" style={{ height: '40px', width: '40px' }} />
+          <img loading='lazy' src={Add} alt="" style={{ height: '40px', width: '40px' }} />
           <h5 style={{ marginBlock: 'auto', color: 'black' }}>Add Product</h5>
         </div>
       </Link>
       <hr />
       <Link to={`/adminallproducts/${adminId}`}>
         <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-          <img src={list} alt="" style={{ height: '40px', width: '40px' }} />
+          <img loading='lazy' src={list} alt="" style={{ height: '40px', width: '40px' }} />
           <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Products</h5>
         </div>
       </Link>
@@ -50,7 +50,7 @@ function Admin() {
         role == 'Super Admin' ? (
           <Link to={`/adminAllOrders/${adminId}`}>
             <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-              <img src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
+              <img loading='lazy' src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
               <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Orders</h5>
             </div>
           </Link>
@@ -64,7 +64,7 @@ function Admin() {
 
           <Link to={`/AdminAllUsers/${adminId}`}>
             <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-              <img src={user} alt="" style={{ width: '40px', height: '30px',marginBlock: '5px' }} />
+              <img loading='lazy' src={user} alt="" style={{ width: '40px', height: '30px',marginBlock: '5px' }} />
               <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Users</h5>
             </div>
           </Link>
@@ -75,7 +75,7 @@ function Admin() {
         ) : ''}
       <Link>
         <div onClick={handleLogout} className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-          <MdLogout style={{ fontSize: '40px', color: '#9bf900' }} />
+          <MdLogout style={{ fontSize: '30px', color: '#9bf900' }} />
           <h5 style={{ marginBlock: 'auto', color: 'black' }}>Log Out</h5>
         </div>
       </Link>

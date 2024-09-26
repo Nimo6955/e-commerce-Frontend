@@ -27,7 +27,7 @@ function Category() {
             <div className="boxes1">
                 <div className="imgBox">
                     <div className="box1 box" >
-                        <img src={bg1} alt="" />
+                        <img loading='lazy' src={bg1} alt="" />
 
                     </div>
                 </div>
@@ -39,7 +39,7 @@ function Category() {
             <div className="boxes1">
                 <div className="imgBox">
                     <div className="box1 box" >
-                        <img src={bg2} alt="" />
+                        <img loading='lazy' src={bg2} alt="" />
 
                     </div>
                 </div>
@@ -51,7 +51,7 @@ function Category() {
             <div className="boxes1">
                 <div className="imgBox">
                     <div className="box1 box" >
-                        <img src={bg3} alt="" />
+                        <img loading='lazy' src={bg3} alt="" />
 
                     </div>
                 </div>

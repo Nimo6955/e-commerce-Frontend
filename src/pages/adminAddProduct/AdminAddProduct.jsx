@@ -10,7 +10,7 @@ import user from '../../assets/adminUsers.gif'
 import { jwtDecode } from 'jwt-decode'
 import {Popover} from 'antd';
 import { FaPlus } from "react-icons/fa";
-import Skull from '../../assets/skull.png'
+import Skull from '../../assets/skullLogo.png'
 import Add from '../../assets/adminAdd.gif'
 import toast from 'react-hot-toast';
 
@@ -106,7 +106,7 @@ function AdminAddProduct() {
         fileReader.onload = () => {
             if (fileReader.readyState === fileReader.DONE) {
                 setProductImage1pre(fileReader.result)
-                setProductImage1(file)
+                setProductImage1(fileReader.result)
             }
         }
     }
@@ -117,7 +117,7 @@ function AdminAddProduct() {
         fileReader.onload = () => {
             if (fileReader.readyState === fileReader.DONE) {
                 setProductImage2pre(fileReader.result)
-                setProductImage2(file)
+                setProductImage2(fileReader.result)
             }
         }
     }
@@ -128,7 +128,7 @@ function AdminAddProduct() {
         fileReader.onload = () => {
             if (fileReader.readyState === fileReader.DONE) {
                 setProductImage3pre(fileReader.result)
-                setProductImage3(file)
+                setProductImage3(fileReader.result)
             }
         }
     }
@@ -139,7 +139,7 @@ function AdminAddProduct() {
         fileReader.onload = () => {
             if (fileReader.readyState === fileReader.DONE) {
                 setProductImage4pre(fileReader.result)
-                setProductImage4(file)
+                setProductImage4(fileReader.result)
             }
         }
     }
@@ -161,15 +161,17 @@ function AdminAddProduct() {
     const content = (
         <div style={{padding: '20px'}}>
            <Link to={`/admin`} >
-          <div className="adminPanal" style={{display: 'flex',gap: '20px',cursor:'pointer'}}>
-            <img src={Skull} alt="" style={{height: '40px',width: '40px'}}/>
-            <h5 style={{marginBlock: 'auto',color: 'black'}}>Admin Page</h5>
+           <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
+          <div className="" style={{background: '#000', height: '40px', width: '40px', borderRadius: '50%',paddingTop: '2px'}}>
+          <img loading='lazy' src={Skull} alt="" style={{ height: '40px', width: '40px' }} />
           </div>
+          <h5 style={{ marginBlock: 'auto', color: 'black' }}>Admin Page</h5>
+        </div>
           </Link>
           <hr />
           <Link to={`/adminallproducts/${adminId}`}>
             <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-              <img src={list} alt="" style={{ height: '40px', width: '40px' }} />
+              <img loading='lazy' src={list} alt="" style={{ height: '40px', width: '40px' }} />
               <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Products</h5>
             </div>
           </Link>
@@ -178,7 +180,7 @@ function AdminAddProduct() {
             role == 'Super Admin' ? (
               <Link to={`/adminAllOrders/${adminId}`}>
                 <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-                  <img src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
+                  <img loading='lazy' src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
                   <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Orders</h5>
                 </div>
               </Link>
@@ -192,7 +194,7 @@ function AdminAddProduct() {
     
               <Link to={`/AdminAllUsers/${adminId}`}>
                 <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-                  <img src={user} alt="" style={{ width: '40px', height: '30px',marginBlock: '5px' }} />
+                  <img loading='lazy' src={user} alt="" style={{ width: '40px', height: '30px',marginBlock: '5px' }} />
                   <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Users</h5>
                 </div>
               </Link>
@@ -203,7 +205,7 @@ function AdminAddProduct() {
             ) : ''}
           <Link>
             <div onClick={handleLogout} className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-              <MdLogout style={{ fontSize: '40px', color: '#9bf900' }} />
+              <MdLogout style={{ fontSize: '30px', color: '#9bf900' }} />
               <h5 style={{ marginBlock: 'auto', color: 'black' }}>Log Out</h5>
             </div>
           </Link>
@@ -232,8 +234,9 @@ function AdminAddProduct() {
                     <textarea type="text" name="productDescription" id="productDescription" value={description} onChange={(e) => setDescription(e.target.value)} />
 
                     <label htmlFor="productCategory">Category</label>
-                    <select defaultValue={category} onChange={(e) => setCategory(e.target.value)} name="category" className='addProductSelector'>
-                        <option defaultValue="Accessories">Accessories</option>
+                    <select value={category} onChange={(e) => setCategory(e.target.value)} name="category" className='addProductSelector'>
+                        <option value=""></option>
+                        <option value="Accessories">Accessories</option>
                         <option value="Console">Console</option>
                         <option value="Game">Game</option>
                         <option value="Controller">Controller</option>
@@ -243,7 +246,7 @@ function AdminAddProduct() {
                         <label htmlFor='uploadInput' style={{ cursor: 'pointer' }}>
 
                             {productImage1pre ? (
-                                <img className='productImgae' src={productImage1pre} alt="" />
+                                <img loading='lazy' className='productImgae' src={productImage1pre} alt="" />
                             ) : (
 
                                 <div className="productImgae">
@@ -255,7 +258,7 @@ function AdminAddProduct() {
                         </label>
                         <label htmlFor='uploadInput1' style={{ cursor: 'pointer' }}>
                             {productImage2pre ? (
-                                <img className='productImgae1' src={productImage2pre} alt="" />
+                                <img loading='lazy' className='productImgae1' src={productImage2pre} alt="" />
                             ) : (
                                 <div className="productImgae1">
                                     <FiUploadCloud className='uploadIcon1' />
@@ -267,7 +270,7 @@ function AdminAddProduct() {
                         </label>
                         <label htmlFor='uploadInput2' style={{ cursor: 'pointer' }}>
                             {productImage3pre ? (
-                                <img className='productImgae2' src={productImage3pre} alt="" />
+                                <img loading='lazy' className='productImgae2' src={productImage3pre} alt="" />
                             ) : (
                                 <div className="productImgae2">
                                     <FiUploadCloud className='uploadIcon2' />
@@ -278,7 +281,7 @@ function AdminAddProduct() {
                         </label>
                         <label htmlFor='uploadInput3' style={{ cursor: 'pointer' }}>
                             {productImage4pre ? (
-                                <img className='productImgae3' src={productImage4pre} alt="" />
+                                <img loading='lazy' className='productImgae3' src={productImage4pre} alt="" />
                             ) : (
                                 <div className="productImgae3">
                                     <FiUploadCloud className='uploadIcon3' />

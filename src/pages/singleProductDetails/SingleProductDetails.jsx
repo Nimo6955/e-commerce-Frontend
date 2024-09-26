@@ -10,6 +10,7 @@ import axios from 'axios'
 import Footer from '../../components/footer/Footer'
 import toast from 'react-hot-toast'
 import { userContext } from '../../App'
+import ErrorPage from '../errorPage/ErrorPage';
 
 
 
@@ -23,6 +24,19 @@ function SingleProductDetails({karts}) {
 
 
   const [allProducts, setAllProducts] = useState()
+
+  const token = localStorage?.getItem('token');  
+  
+  
+  const validateToken = (token) => {   
+    return typeof token === 'string' && token.split('.').length === 3;  
+  };  
+
+  if (!validateToken(token) && token) {  
+    console.error('Invalid token format');
+      
+    return <ErrorPage/>
+  }  
 
   useEffect(() => {
 
@@ -128,7 +142,7 @@ function SingleProductDetails({karts}) {
             <div id="curved-corner-bottomleft" style={{ position: 'absolute', bottom: '100px' }}></div>
             <div id="curved-corner-bottomleft" style={{ position: 'absolute', bottom: '0', left: '150px' }}></div>
             <div className="imgContainer">
-              <img src={product.productImage[0]} alt="" />
+              <Image  loading='lazy' src={product.productImage[0]} alt="" mask={false} preview={{ src: product.productImage[0],mask: false}} />
 
             </div>
           </div>

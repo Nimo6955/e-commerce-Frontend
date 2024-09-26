@@ -17,13 +17,13 @@ function Loader() {
         <div class="loader"></div>
         </div>
         <div className="center">
-          <img className='Headphones' src={Headphones} alt="" />
+          <img loading='lazy' className='Headphones' src={Headphones} alt="" />
           <h1 className='txtTop'>MANIAC</h1>
           <h1 className='txt'>GAMING</h1>
         </div>
-      <img className='Mouse' src={Mouse} alt="" />
-      <img className='Chair' src={Chair} alt="" />
-      <img className='Cd' src={Cd} alt="" />
+      <img loading='lazy' className='Mouse' src={Mouse} alt="" />
+      <img loading='lazy' className='Chair' src={Chair} alt="" />
+      <img loading='lazy' className='Cd' src={Cd} alt="" />
     </div>
     </div>
   )

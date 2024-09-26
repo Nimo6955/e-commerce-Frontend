@@ -10,10 +10,10 @@ function ProductMobile({product}) {
         navigate(`/allproducts/${product._id}`)
     }
   return (
-    <div className='mobielCard' >
+    <div className='mobielCard' onClick={idk}>
         <div className="cardContainer">
             <div className="cardImg">
-            <img className='productImgMobile'  src={product?.productImage && product?.productImage[0]} alt="" />
+            <img loading='lazy' className='productImgMobile'  src={product?.productImage && product?.productImage[0]} alt="" />
             </div>
             <div className="productInfoMobile">
                 <h5 className='productNameMobile'>{product.productName.length > 20 ?  `${product.productName.substring(0,10)}...` : product.productName}</h5>

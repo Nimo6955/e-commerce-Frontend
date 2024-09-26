@@ -21,8 +21,7 @@ function Product({ product }) {
     const { user, setUser } = useContext(userContext)
 
     const [karts, setKarts] = useState([]);
-
-
+    
     function fetchKartsData() {
         axios.post(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/product/getKarts/${user._id}`).then((res) => {
             setKarts(res.data.result.products);
@@ -35,7 +34,7 @@ function Product({ product }) {
             .then(res => {
                 setSeed(Math.random())
                 console.log(res);
-                setUser(res.data.result.user)
+                setUser(res?.data?.result?.user)
                 toast.success('Item Added To Cart', {
                     style: {
                         border: '1px solid #9bf900',
@@ -85,7 +84,7 @@ function Product({ product }) {
                             <div id="curved-corner-bottomleft" style={{ position: 'absolute', bottom: '100px', left: '0' }}></div>
                             <div id="curved-corner-bottomleft" style={{ position: 'absolute', bottom: '0', left: '100px' }}></div>
 
-                            <img className="productImg" src={product?.productImage && product?.productImage[0]} alt="" id="img" />
+                            <img loading='lazy' className="productImg" src={product?.productImage && product?.productImage[0]} alt="" id="img" />
                         </div>
                     </div>
                     <div className="product-info">

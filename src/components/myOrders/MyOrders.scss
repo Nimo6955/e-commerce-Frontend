@@ -104,6 +104,21 @@
                     }
                 }
             }
+
+            .no_order{
+                display: flex;
+                flex-direction: column;
+            img{
+                height: 350px;
+                width: 350px;
+                margin-inline: auto;
+            }
+            p{
+                font-family: "MODERN";
+                text-align: center;
+                color: var(--primary-button-color);
+            }
+            }
         }
 
         ::-webkit-scrollbar-track {

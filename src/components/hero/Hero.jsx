@@ -67,16 +67,16 @@ function Hero() {
           <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src={wukongImg} class="d-block w-100 caroulesImg" alt="..." />
+                <img loading='lazy' src={wukongImg} class="d-block w-100 caroulesImg" alt="..." />
               </div>
               <div class="carousel-item">
-                <img src={gtaImg} class="d-block w-100 caroulesImg" alt="..." />
+                <img loading='lazy' src={gtaImg} class="d-block w-100 caroulesImg" alt="..." />
               </div>
               <div class="carousel-item">
-                <img src={dbzImg} class="d-block w-100 caroulesImg" alt="..." />
+                <img loading='lazy' src={dbzImg} class="d-block w-100 caroulesImg" alt="..." />
               </div>
               <div class="carousel-item">
-                <img src={gowImg} class="d-block w-100 caroulesImg" alt="..." />
+                <img loading='lazy' src={gowImg} class="d-block w-100 caroulesImg" alt="..." />
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">

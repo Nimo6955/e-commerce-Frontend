@@ -59,7 +59,7 @@ function AdminProductCard({product}) {
     <>
     <div className='allProductBox' key={seed}>
         <div className="productsCard">  
-        <img className="productImg" src={product?.productImage[0]} alt="" />  
+        <img loading='lazy' className="productImg" src={product?.productImage[0]} alt="" />  
         <p className="name">{product?.productName}</p>  
         <p className="price">{product?.old_price}</p>  
         <p className="price">{product?.new_price}</p>

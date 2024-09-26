@@ -3,6 +3,7 @@ import './Footer.scss'
 import creditCardImg from '../../assets/creditcardicons.png'
 import navLogo from '../../assets/navLogo3.png'
 import { CiTwitter,CiFacebook ,CiLinkedin, CiInstagram  } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -11,7 +12,7 @@ function Footer() {
         <div className="footer-content">
             <div className="footer-content-left">
               <div className="Logo" style={{display: 'flex',alignItems: 'center'}}>
-              <img className='foot_logo' src={navLogo} alt="" />
+              <img loading='lazy' className='foot_logo' src={navLogo} alt="" />
                 <h2>MANIAC GAMING</h2>
               </div>
               {/* <span className="nav_logo text-white mx-3 ">FOOD HUNTER</span> */}
@@ -35,8 +36,12 @@ function Footer() {
             <div className="footer-content-center">
               <h5>COMPANY</h5>
               <ul>
+                <Link to='/'>
                 <li>Home</li>
+                </Link>
+                <Link to='/allproducts'>
                 <li>All Products</li>
+                </Link>
                 {/* <li>Delivery</li> */}
                 <li>Privacy policy</li>
               </ul>

@@ -39,12 +39,45 @@ function Login() {
 
   axios.defaults.withCredentials = true;
   const handleSubmit = (e) => {
+  let emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+  if (!emailRegex.test(email) || email == '') {
+    toast.error('Invalid Email Format', {
+      style: {
+        border: '1px solid red',
+      //   padding: '16px',
+        color: '#ffffff',
+        background: 'black',
+      //   borderRadius: '30px'
+      },
+      iconTheme: {
+        primary: 'red',
+        secondary: '#000',
+      },
+      duration: 2000
+    });
+  }else if( !password){
+    toast.error('Password is Required', {
+      style: {
+        border: '1px solid red',
+      //   padding: '16px',
+        color: '#ffffff',
+        background: 'black',
+      //   borderRadius: '30px'
+      },
+      iconTheme: {
+        primary: 'red',
+        secondary: '#000',
+      },
+      duration: 2000
+    });
+  }else{
+
     e.preventDefault();
     axios.post(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/auth/login`, { email, password })
       .then(res => {
-        if (res.data) {
+        console.log(res.data);
+        if (res.data.status == "ok") {
           const decoded = jwtDecode(res.data.result)
-          console.log(decoded.user);
           localStorage.setItem('token', res.data.result)
           if (decoded.user.role === 'admin' || decoded.user.role === 'Super Admin') {
             navigate('/admin')
@@ -54,11 +87,25 @@ function Login() {
             navigate(0)
           }
         } else {
-          alert("Invalid Credentials")
+          toast.error('Invalid Credentials', {
+            style: {
+              border: '1px solid red',
+            //   padding: '16px',
+              color: '#ffffff',
+              background: 'black',
+            //   borderRadius: '30px'
+            },
+            iconTheme: {
+              primary: 'red',
+              secondary: '#000',
+            },
+            duration: 2000
+          });
         }
       })
       .catch(err => console.log(err))
   };
+}
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -106,7 +153,20 @@ function Login() {
       email: forgetEmail
     }).then(res => {
       console.log(res);
-      toast.success('OTP sent to your Email successfully')
+      toast.success('OTP sent to your Email successfully', {
+        style: {
+          border: '1px solid #9bf900',
+        //   padding: '16px',
+          color: '#ffffff',
+          background: 'black',
+        //   borderRadius: '30px'
+        },
+        iconTheme: {
+          primary: '#9bf900',
+          secondary: '#000',
+        },
+        duration: 2000
+      });
       setIsModalOpen(false);
       showOTPModal()
     }).catch(err =>
@@ -120,7 +180,20 @@ function Login() {
       otp: otp
     }).then(res => {
       console.log(res);
-      toast.success('OTP verified successfully')
+      toast.success('OTP verified successfully', {
+        style: {
+          border: '1px solid #9bf900',
+        //   padding: '16px',
+          color: '#ffffff',
+          background: 'black',
+        //   borderRadius: '30px'
+        },
+        iconTheme: {
+          primary: '#9bf900',
+          secondary: '#000',
+        },
+        duration: 2000
+      });
       setIsOTPModalOpen(false);
       showNewPassModal()
     }).catch(err =>
@@ -137,13 +210,39 @@ function Login() {
         newPassword: newPassword
       }).then(res => {
         console.log(res);
-        toast.success('Password Changed successfully')
+        toast.success('Password Changed successfully', {
+          style: {
+            border: '1px solid #9bf900',
+          //   padding: '16px',
+            color: '#ffffff',
+            background: 'black',
+          //   borderRadius: '30px'
+          },
+          iconTheme: {
+            primary: '#9bf900',
+            secondary: '#000',
+          },
+          duration: 2000
+        });
         setIsNewPassModalOpen(false);
       }).catch(err =>
         console.log(err)
       )
     } else {
-      toast.error('The passwords does not match ?')
+      toast.error('The passwords does not match ?', {
+        style: {
+          border: '1px solid red',
+        //   padding: '16px',
+          color: '#ffffff',
+          background: 'black',
+        //   borderRadius: '30px'
+        },
+        iconTheme: {
+          primary: 'red',
+          secondary: '#000',
+        },
+        duration: 2000
+      });
     }
   }
   return (
@@ -161,7 +260,7 @@ function Login() {
         <div className="main">
           <div className="formImage">
             <div className="objImg">
-              <img src={Viper} alt="" />
+              <img loading='lazy' src={Viper} alt="" />
 
             </div>
 

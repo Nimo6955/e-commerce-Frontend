@@ -13,7 +13,7 @@ function CartCard({product}) {
   return (  
     <>    
       <div className="productscart">  
-        <img className="productImg" src={image} alt="" />  
+        <img loading='lazy' className="productImg" src={image} alt="" />  
         <p className="name">{product?.productName}</p>  
         <p className="price">{product?.new_price}</p>  
         <p className="Quantity" id='try'><CiCircleMinus  className='quantityIcon' />{product?.quantity}<CiCirclePlus className='quantityIcon'  /></p>

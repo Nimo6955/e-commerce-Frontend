@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MdErrorOutline, MdLogout } from "react-icons/md";
 import { jwtDecode } from 'jwt-decode'
 import list from '../../assets/adminList.gif'
-import Skull from '../../assets/skull.png'
+import Skull from '../../assets/skullLogo.png'
 import Add from '../../assets/adminAdd.gif'
 
 
@@ -37,21 +37,23 @@ function AdminAllUsers() {
     <div style={{ padding: '20px' }}>
       <Link to={`/admin`} >
         <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-          <img src={Skull} alt="" style={{ height: '40px', width: '40px' }} />
+          <div className="" style={{background: '#000', height: '40px', width: '40px', borderRadius: '50%',paddingTop: '2px'}}>
+          <img loading='lazy' src={Skull} alt="" style={{ height: '40px', width: '40px' }} />
+          </div>
           <h5 style={{ marginBlock: 'auto', color: 'black' }}>Admin Page</h5>
         </div>
       </Link>
       <hr />
       <Link to={`/adminaddproduct/${adminId}`} >
         <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-          <img src={Add} alt="" style={{ height: '40px', width: '40px' }} />
+          <img loading='lazy' src={Add} alt="" style={{ height: '40px', width: '40px' }} />
           <h5 style={{ marginBlock: 'auto', color: 'black' }}>Add Product</h5>
         </div>
       </Link>
       <hr />
       <Link to={`/adminallproducts/${adminId}`}>
         <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-          <img src={list} alt="" style={{ height: '40px', width: '40px' }} />
+          <img loading='lazy' src={list} alt="" style={{ height: '40px', width: '40px' }} />
           <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Products</h5>
         </div>
       </Link>
@@ -60,7 +62,7 @@ function AdminAllUsers() {
         role == 'Super Admin' ? (
           <Link to={`/adminAllOrders/${adminId}`}>
             <div className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-              <img src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
+              <img loading='lazy' src={Kart} alt="" style={{ height: '40px', width: '40px' }} />
               <h5 style={{ marginBlock: 'auto', color: 'black' }}>All Orders</h5>
             </div>
           </Link>
@@ -71,7 +73,7 @@ function AdminAllUsers() {
         ) : ''}
       <Link>
         <div onClick={handleLogout} className="adminPanal" style={{ display: 'flex', gap: '20px', cursor: 'pointer' }}>
-          <MdLogout style={{ fontSize: '40px', color: '#9bf900' }} />
+          <MdLogout style={{ fontSize: '30px', color: '#9bf900' }} />
           <h5 style={{ marginBlock: 'auto', color: 'black' }}>Log Out</h5>
         </div>
       </Link>

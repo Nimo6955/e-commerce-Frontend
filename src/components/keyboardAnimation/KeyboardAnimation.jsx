@@ -434,7 +434,7 @@ function KeyboardAnimation() {
         <div className="KeyboardAnimationMob">
             <div className="vidBox">
                 <div autoPlay='true' muted loop id="myVideo1" data-aos="zoom-in">
-                    <img className='vidImg' src={mobileImg}  />
+                    <img loading='lazy' className='vidImg' src={mobileImg}  />
                 </div>
             </div>
             <div className="txt" ref={textRef}>

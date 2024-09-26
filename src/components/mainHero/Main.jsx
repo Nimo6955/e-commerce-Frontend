@@ -30,7 +30,7 @@ function Main() {
             <div className='main1'>
               <div className="background" data-aos="zoom-in" data-aos-duration="2500"></div>
               <div className="frontImgDiv" >
-              <img className='frontImage' data-aos="zoom-in" data-aos-duration="1500" src={frontImage} alt="" />
+              <img loading='lazy' className='frontImage' data-aos="zoom-in" data-aos-duration="1500" src={frontImage} alt="" />
               </div>
 
               <div className="topDiv" data-aos="fade-down">
@@ -51,7 +51,7 @@ function Main() {
             <div className='main2'>
               <div className="background" data-aos="zoom-in" data-aos-duration="2500"></div>
               <div className="frontImgDiv">
-              <img className='frontImage' data-aos="zoom-in"  src={frontImage2} alt="" />
+              <img loading='lazy' className='frontImage' data-aos="zoom-in"  src={frontImage2} alt="" />
               </div>
               <div className="bottomDiv">
                 <h3>ALPHA WHITE</h3>
@@ -62,7 +62,7 @@ function Main() {
             <div className='main3'>
               <div className="background" data-aos="zoom-in" data-aos-duration="2500"></div>
               <div className="frontImgDiv">
-              <img className='frontImage' data-aos="zoom-in"  src={frontImage3} alt="" />
+              <img loading='lazy' className='frontImage' data-aos="zoom-in"  src={frontImage3} alt="" />
               </div>
               <div className="bottomDiv">
                 <h3>WAR NINJA</h3>
@@ -73,7 +73,7 @@ function Main() {
             <div className='main4'>
               <div className="background" data-aos="zoom-in" data-aos-duration="2500"></div>
               <div className="frontImgDiv">
-              <img className='frontImage' data-aos="zoom-in"  src={frontImage4} alt="" />
+              <img loading='lazy' className='frontImage' data-aos="zoom-in"  src={frontImage4} alt="" />
               </div>
               <div className="bottomDiv">
                 <h3>CYBER GIRL</h3>

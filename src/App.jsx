@@ -24,21 +24,21 @@ import AdminAllUsers from './pages/AdminAllUsers/AdminAllUsers';
 import AdminAllOrders from './pages/adminAllOrders/AdminAllOrders';
 import toast, { Toaster } from 'react-hot-toast';
 import Navbar from './components/navbar/Navbar';
+import OnlyIfNotLoggedIn from './OnlyIfNotLoggedIn/OnlyIfNotLoggedIn';
 
 export const userContext = createContext()
 
 function App() {
   const [user, setUser] = useState({});  
-  
-  axios.defaults.withCredentials = true;  
-  
+  const token = localStorage?.getItem('token');  
+
+  axios.defaults.withCredentials = true; 
   useEffect(() => {  
     axios.get(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/auth/`)  
       .then(response => {  
-        const allUsers = response.data.result.user;  
-        const token = localStorage.getItem('token');  
+        const allUsers = response?.data?.result?.user;   
         const decodedToken = jwtDecode(token);  
-        const curUser = allUsers.find(user => user._id === decodedToken.user._id); // use find instead of filter  
+        const curUser = allUsers?.find(user => user?._id === decodedToken?.user?._id); // use find instead of filter  
         setUser(curUser);    
   
       })  
@@ -54,15 +54,19 @@ function App() {
       <div><Toaster/></div>
         <userContext.Provider value={{user,setUser}}>
           <ProductContext>
-            <Router>
+            {/* <Router> */}
               {/* <Navbar karts={karts}/> */}
               <Routes>
                 <Route path='/' element={<Home user={user}  />} />
                 <Route path='/allproducts' element={<AllProducts user={user}  />} />
                 <Route path='/allproducts/:id' element={<SingleProductDetails  />} />
                 <Route path='/cart' element={<Cart  />} />
+
+                <Route element= {<OnlyIfNotLoggedIn/>}>
                 <Route path='/login' element={<Login />} />
                 <Route path='/signup' element={<Signup />} />
+                </Route>
+               
                 <Route path='/profile' element={<Profile  />} />
                 <Route path='/errorpage' element={<ErrorPage />} />
                 <Route path='/admin' element={<ProtectedRoute element={Admin} />} />
@@ -71,7 +75,7 @@ function App() {
                 <Route path='/adminAllOrders/:id' element={<ProtectedRoute element={AdminAllOrders} />} />
                 <Route path='/AdminAllUsers/:id' element={<ProtectedRoute element={AdminAllUsers} />} />
               </Routes>
-            </Router>
+            {/* </Router> */}
           </ProductContext>
         </userContext.Provider>
       </div>
