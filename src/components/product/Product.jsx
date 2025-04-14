@@ -23,7 +23,7 @@ function Product({ product }) {
     const [karts, setKarts] = useState([]);
     
     function fetchKartsData() {
-        axios.post(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/product/getKarts/${user._id}`).then((res) => {
+        axios.post(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/product/getKarts/${user?._id}`).then((res) => {
             setKarts(res.data.result.products);
         }).catch(err => {
             console.log(err); // Handle the error  

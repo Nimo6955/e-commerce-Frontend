@@ -129,7 +129,7 @@ function MyOrders() {
                                     <div className="deleteBtnBox" onClick={() => showModal(order._id)}>
                                         <button className='productDelete' data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="Delete Order"><IoTrashBinOutline className='deleteIcon' /></button>
                                     </div>
-                                    <div className="popover" style={{ background: '#415d43', border: 'none' }} >
+                                    <div className="popover" style={{ background: '#415d43', border: 'none',zIndex: 10}} >
                                         <Popover onClick={() => { setId(order._id); setstatus(order.status) }} content={content} trigger="click">
                                             <PiDotsThreeOutlineVerticalFill className='profileIcon' style={{ marginBlock: 'auto', color: 'white', fontSize: '20px' }} />
                                         </Popover>

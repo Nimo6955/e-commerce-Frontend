@@ -244,6 +244,11 @@
 
 @media only screen and (max-width: 500px) {
     .myOrdersComp {
+        .personalInfo{
+            h3{
+                padding: 20px 0px;
+            }
+        }
         .rightContainer {
             .orderContainer {
                 .singleOrder {

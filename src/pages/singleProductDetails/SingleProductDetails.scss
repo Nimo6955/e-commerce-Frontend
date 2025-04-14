@@ -179,6 +179,7 @@
                     color: var(--primary-button-color);
                     font-weight: 600;
                     background-color: black;
+                    border: 1px solid var(--primary-button-color);
                 }
             }
 
@@ -197,7 +198,7 @@
                     color: black;
                     font-weight: 600;
                     background-color: var(--primary-button-color);
-
+                    border: 1px solid black;
                 }
             }
         }

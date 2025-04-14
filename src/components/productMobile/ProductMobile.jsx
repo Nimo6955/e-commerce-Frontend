@@ -16,7 +16,7 @@ function ProductMobile({product}) {
             <img loading='lazy' className='productImgMobile'  src={product?.productImage && product?.productImage[0]} alt="" />
             </div>
             <div className="productInfoMobile">
-                <h5 className='productNameMobile'>{product.productName.length > 20 ?  `${product.productName.substring(0,10)}...` : product.productName}</h5>
+                <p className='productNameMobile'>{product.productName.length > 15 ?  `${product.productName.substring(0,10)}...` : product.productName}</p>
                 <div className="price">
                 <p className='productPriceMobileOld'> ₹ {product?.new_price}</p>
                 <p className='productPriceMobile'> ₹ {product?.new_price}</p>

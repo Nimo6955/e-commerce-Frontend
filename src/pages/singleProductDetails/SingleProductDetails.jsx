@@ -95,7 +95,7 @@ function SingleProductDetails({karts}) {
     if(navigator.share){
       navigator.share({
         title: singleProduct && singleProduct[0]?.productName,
-        url: ''
+        url: `#/allproducts/${singleProduct[0]?._id}`
       }).then(() => {
         console.log('share link fecthed');
       }).catch((e) => {

@@ -27,9 +27,60 @@
             align-items: stretch;
             margin-top: 20px;
             place-items: center;
+            .Product{
+                .product-container{
+                    .product-img{
+                        .img-container{
+                            // position: relative;
+                            // overflow: hidden;
+                            .animateShimmer{
+                                // position: absolute;
+                                background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));  
+                                background-size: 200% 100%;  
+                                animation: shimmer 3s linear infinite;  
+                            
+                                @keyframes shimmer {  
+                                    0% {  
+                                        background-position: 200% 0;  
+                                    }  
+                                    100% {  
+                                        background-position: -200% 0;  
+                                    }  
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
         }
         .mobileContent{
             display: none;
+
+            .mobielCard{
+                .cardContainer{
+                    .cardImg{
+                        overflow: hidden;
+                        .animateShimmer{
+                            height: 100%;
+                            width: 100%;
+                            
+                            background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(85, 84, 84, 0.5), rgba(255, 255, 255, 0.1));  
+                            background-size: 200% 100%;  
+                            animation: shimmer 6s linear infinite;  
+                        
+                            @keyframes shimmer {  
+                                0% {  
+                                    background-position: 200% 0;  
+                                }  
+                                100% {  
+                                    background-position: -200% 0;  
+                                }  
+                            }
+                        }
+                    }
+                }
+            }
         }
         .categoryContent{
            display: flex;

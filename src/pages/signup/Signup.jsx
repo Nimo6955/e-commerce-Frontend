@@ -112,7 +112,7 @@ function Signup() {
 
         <Canvas dpr={[1, 2]} camera={{ fov: 45 }}  >
           <PresentationControls speed={1.5} zoom={.5} polar={[0, 0]}>
-            <Stage  >
+            <Stage intensity={0.1} >
               <Model scale={0.01} />
             </Stage>
           </PresentationControls>

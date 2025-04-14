@@ -312,7 +312,14 @@
 }
 @media only screen and (max-width: 600px) {
     .address{
+        .personalInfo{
+            h3{
+                padding: 20px 0px;
+            }
+
+        }
         .rightContainer{
+
             .addressContainer{
                 .allAddressContent{
                     .deleteBtnBox{

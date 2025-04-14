@@ -26,6 +26,7 @@ import { Tooltip } from 'antd';
 import emailjs from '@emailjs/browser';
 import ErrorPage from '../errorPage/ErrorPage'
 import Navlogo from '../../assets/navLogo.png'
+import { ShimmerContentBlock, ShimmerPostItem } from 'react-shimmer-effects'
 
 
 function Home({ user }) {
@@ -62,7 +63,7 @@ function Home({ user }) {
 
 
   const context = useContext(Productcontext)
-  const { allProducts } = context;
+  const { allProducts, isShimmer } = context;
 
   const games = allProducts?.filter(product => product?.category == "Game")
 
@@ -119,7 +120,7 @@ function Home({ user }) {
       ) : (
 
         <div className='home' id='Home'>
-          <Navbar user={user.user} />
+          <Navbar user={user?.user} />
 
           <Main />
           <KeyboardAnimation />
@@ -142,14 +143,62 @@ function Home({ user }) {
               <p className='subheading'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, amet!</p>
             </div>
             <div className="content">
-              {games?.map(product => (
+            {isShimmer ? (
+              // Render shimmer cards while isShimmer  
+              Array.from({ length: 4 }).map((_, index) => (
+
+                <div key={index} className="Product" >
+                  <div className="product-container" >
+                    <div className="product-img" >
+                      <div className="img-container" style={{ backgroundColor: '#415d43' }}>
+                        <div className="cut"></div>
+                        <div id="curved-corner-bottomleft" style={{ position: 'absolute', bottom: '100px', left: '0' }}></div>
+                        <div id="curved-corner-bottomleft" style={{ position: 'absolute', bottom: '0', left: '100px' }}></div>
+                        <div className='animateShimmer' style={{ width: '300px', height: '100%' }}></div>
+                      </div>
+                    </div>
+                    <div className="product-info">
+                      <p className="title" >
+
+                      </p>
+                      <p className="price" style={{ background: '#415d43', width: '100px', marginInline: 'auto', borderRadius: '20px' }}>-</p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              games?.map(product => (
                 <Product product={product} key={user?._id} />
-              ))}
+              ))
+            )}
             </div>
             <div className="mobileContent">
-              {games?.map(product => (
+            {isShimmer ? (
+              // Render shimmer cards while isShimmer  
+              Array.from({ length: 4 }).map((_, index) => (
+                <div key={index} style={{ width: '100%', borderRadius: "10px", overflow: 'hidden', marginBottom: '20px' }}>
+                  <div className='mobielCard' >
+                    <div className="cardContainer">
+                      <div className="cardImg">
+                        <div className="animateShimmer"></div>
+
+                      </div>
+                      <div className="productInfoMobile" style={{ width: '50%' }}>
+                        <h5 className='productNameMobile' style={{ width: '100%', height: '20px', background: '#709775', marginInline: 'auto' }}></h5>
+                        <div className="price" >
+                          <div className='productPriceMobileOld' style={{ width: '50%', height: '10px', background: '#709775', marginInline: 'auto' }}></div>
+                          <div className='productPriceMobile'  ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              games?.map(product => (
                 <ProductMobile product={product} key={user?._id} />
-              ))}
+              ))
+            )}
             </div>
           </div>
           {role === 'user' ?

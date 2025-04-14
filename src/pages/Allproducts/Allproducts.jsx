@@ -9,10 +9,12 @@ import { FaCaretDown } from "react-icons/fa";
 import ProductMobile from '../../components/productMobile/ProductMobile';
 import ErrorPage from '../errorPage/ErrorPage';
 import Footer from '../../components/footer/Footer';
+import { ShimmerContentBlock, ShimmerPostItem } from 'react-shimmer-effects';
 
 function Accessories({ user }) {
   const context = useContext(Productcontext);
-  const { allProducts } = context;
+
+  const { allProducts, isShimmer } = context;
   const [selectedCategory, setSelectedCategory] = useState('All');
   const location = useLocation();
   const productRef = useRef();
@@ -20,7 +22,6 @@ function Accessories({ user }) {
   const productNum = useRef();
   const productSort = useRef();
   const getLocation = location.state;
-
 
   const [sum, setSum] = useState(55000)
 
@@ -120,7 +121,7 @@ function Accessories({ user }) {
             </ul>
             <h4 className='filter'>Filter By</h4>
             <hr style={{ color: '#a1cca5' }} />
-            <div style={{width: '90%'}}>
+            <div style={{ width: '90%' }}>
 
               <input type="range" max={55000} value={sum} onChange={(e) => setSum(Number(e.target.value))} class="form-range" id="customRange1" />
               <div className='d-flex justify-content-between'>
@@ -143,7 +144,7 @@ function Accessories({ user }) {
               </div>
               {window.innerWidth < 1050 && (
                 <Popover content={content}>
-                  <div className="iconsa" style={{ height: '40px', width: 'fit-content', background: '#9bf900', color: 'black', borderRadius: '20px', display: 'flex', gap: '10px', paddingInline: '15px' }}>
+                  <div className="iconsa" style={{ height: '40px', width: 'fit-content', background: '#9bf900', color: 'black', borderRadius: '20px', display: 'flex', gap: '10px', paddingInline: '15px', position: 'absolute', top: '0px', right: '0px' }}>
                     <h5 style={{ marginBlock: 'auto' }} ref={sortRef}></h5><FaCaretDown style={{ marginBlock: 'auto' }} />
                   </div>
                 </Popover>
@@ -151,14 +152,64 @@ function Accessories({ user }) {
             </div>
           </div>
           <div className="products">
-            {randomizeArray(allProducts)?.filter(product => (selectedCategory === 'All' || product?.category === selectedCategory) && (product.new_price < sum)).map(product => (
-              <Product key={product?._id} user={user} product={product} />
-            ))}
+            {isShimmer ? (
+              // Render shimmer cards while isShimmer  
+              Array.from({ length: 6 }).map((_, index) => (
+
+                <div key={index} className="Product" >
+                  <div className="product-container" >
+                    <div className="product-img" >
+                      <div className="img-container" style={{ backgroundColor: '#415d43' }}>
+                        <div className="cut"></div>
+                        <div id="curved-corner-bottomleft" style={{ position: 'absolute', bottom: '100px', left: '0' }}></div>
+                        <div id="curved-corner-bottomleft" style={{ position: 'absolute', bottom: '0', left: '100px' }}></div>
+                        <div className='animateShimmer' style={{ width: '300px', height: '100%' }}></div>
+                      </div>
+                    </div>
+                    <div className="product-info">
+                      <p className="title" >
+
+                      </p>
+                      <p className="price" style={{ background: '#415d43', width: '100px', marginInline: 'auto', borderRadius: '20px' }}>-</p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              // Render products once loaded  
+              randomizeArray(allProducts)?.filter(product => (selectedCategory === 'All' || product?.category === selectedCategory) && (product.new_price < sum)).map(product => (
+                <Product key={product?._id} user={user} product={product} />
+              ))
+            )}
           </div>
           <div className="productsMobile">
-            {randomizeArray(allProducts)?.filter(product => selectedCategory === 'All' || product?.category === selectedCategory).map(product => (
-              <ProductMobile key={product?._id} user={user} product={product} />
-            ))}
+            {isShimmer ? (
+              // Render shimmer cards while isShimmer  
+              Array.from({ length: 6 }).map((_, index) => (
+                <div key={index} style={{ width: '100%', borderRadius: "10px", overflow: 'hidden', marginBottom: '20px' }}>
+                  <div className='mobielCard' >
+                    <div className="cardContainer">
+                      <div className="cardImg">
+                        <div className="animateShimmer"></div>
+
+                      </div>
+                      <div className="productInfoMobile" style={{ width: '50%' }}>
+                        <h5 className='productNameMobile' style={{ width: '100%', height: '20px', background: '#709775', marginInline: 'auto' }}></h5>
+                        <div className="price" >
+                          <div className='productPriceMobileOld' style={{ width: '50%', height: '10px', background: '#709775', marginInline: 'auto' }}></div>
+                          <div className='productPriceMobile'  ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              // Render products once loaded  
+              randomizeArray(allProducts)?.filter(product => (selectedCategory === 'All' || product?.category === selectedCategory) && (product.new_price < sum)).map(product => (
+                <ProductMobile key={product?._id} user={user} product={product} />
+              ))
+            )}
           </div>
         </div>
       </div>

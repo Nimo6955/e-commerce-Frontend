@@ -36,18 +36,25 @@ function AdminAddProduct() {
 
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
-
+        e.preventDefault();
         const formData = new FormData()
         formData.append('productName', productName)
         formData.append('category', category)
         formData.append('old_price', old_price)
         formData.append('new_price', new_price)
         formData.append('description',description)
-        formData.append('productImage', productImage1)
-        formData.append('productImage', productImage2)
-        formData.append('productImage', productImage3)
-        formData.append('productImage', productImage4)
 
+        const file1 = base64ToFile(productImage1, "image1.png");  
+        const file2 = base64ToFile(productImage2, "image2.png");  
+        const file3 = base64ToFile(productImage3, "image3.png");  
+        const file4 = base64ToFile(productImage4, "image4.png"); 
+        formData.append('productImage', file1)
+        formData.append('productImage', file2)
+        formData.append('productImage', file3)
+        formData.append('productImage', file4)
+        
+
+        
         if(!productName || !category || !old_price || !new_price || !description || !productImage1 || !productImage2 || !productImage3 || !productImage4){
           toast.error('All Fields And Images Are Required', {
             style: {
@@ -67,7 +74,6 @@ function AdminAddProduct() {
           axios.post(`${import.meta.env.VITE_APP_SERVER_BASE_URL}/product/createProduct`, formData)
           .then(res => {
                 console.log(res);
-
                 toast.success('Product Added Successfully', {
                   style: {
                     border: '1px solid #9bf900',
@@ -98,6 +104,18 @@ function AdminAddProduct() {
               .catch(err => console.log(err))
             }
     };
+
+    function base64ToFile(base64Data, filename) {  
+      const arr = base64Data.split(',');  
+      const mime = arr[0].match(/:(.*?);/)[1];  
+      const bstr = atob(arr[1]);  
+      let n = bstr.length;  
+      const u8arr = new Uint8Array(n);  
+      while (n--) {  
+          u8arr[n] = bstr.charCodeAt(n);  
+      }  
+      return new File([u8arr], filename, { type: mime });  
+  }  
 
     const handleImageChange1 = (e) => {
         const file = e.target.files[0]

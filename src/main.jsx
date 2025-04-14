@@ -9,6 +9,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <HashRouter>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
   </HashRouter>
 )
